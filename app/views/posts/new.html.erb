@@ -1,0 +1,20 @@
+<% unless current_user.posts.size > 2 %>
+<h3>What should you post about?</h3>
+<div class="box2">
+<p>You can post about <strong>anything you find interesting!</strong></p>
+<p>The story of <a href="http://stemming.org/posts/how-did-you-get-started">how you got started in your field</a>;  a <a href="http://stemming.org/posts/creating-a-new-mysql-database">tutorial</a> or <a href="http://stemming.org/posts/resources-for-beginning-programmers">collection of resources</a>; a <a href="http://stemming.org/posts/to-be-a-feminine-computer-scientist-and-not-feel-guilty-about-it">rant</a> or <a href="http://stemming.org/posts/motivating-programming-for-a-12-year-old">a question</a>; <a href="http://stemming.org/posts/hello-world">your technical experiences</a>; <a href="http://stemming.org/posts/dealing-with-drek-in-the-workplace">an offer of advice and support</a>; or even just a <a href="http://stemming.org/posts/computer-engineering-barbie">link to something cool</a>!
+</div>
+<% end %>
+
+
+
+
+
+<%= error_messages_for :post %>
+
+<% form_for(:post, :html => {:multipart => true }, :url => posts_url) do |form| %>
+  <%= render :partial => 'form', :object => form, :locals => {:post => @post} %>
+  
+  <%= submit_tag "Post"  %>
+<% end %>
+

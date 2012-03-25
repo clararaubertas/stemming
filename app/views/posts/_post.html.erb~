@@ -1,0 +1,104 @@
+<div class="postcontainer <% if controller.controller_name == 'application' && controller.action_name == 'index' %>frontcontainer <% end %>">
+<div class="postside">
+<p><%= link_to image_tag(post.poster.avatar.url(:thumb)), {:controller => 'users', :action => 'show', :id => post.poster}, :class => 'imagelink' %></p>
+<p class="showuser"><%= link_to post.poster.login, :controller => 'users', :action => 'show', :id => post.poster %></p>
+<p class="frontdate">
+<% if post.published? %>
+<%= post.published_at.strftime("%b %e") %>
+<% else %>
+<%= post.created_at.strftime("%b %e") %>
+<% end %>
+</p>
+<p class="fronttime">
+<% if post.published? %>
+<%= post.published_at.strftime("%l:%M %p") %>
+<% else %>
+<%= post.created_at.strftime("%l:%M %p") %>
+<% end %>
+</p>
+<p>
+    <%= link_to "<strong class='commentno'>" + post.comments.count.to_s + "</strong> " + (post.comments.count == 1 ? "comment" : "comments"), post_url(:id => post, :anchor => :comments) %>
+</p>
+</div>
+<div class="postotherside">
+    <h2 class="posttitle">
+      <%= link_to post.display_title, post_url(post) %>
+    </h2>    
+<% unless controller.controller_name == 'application' %>
+<% unless post.tags.empty? %><p class="attribution">in
+<% for tag in post.tags.sort_by{|p| p.name} %>
+  <%= link_to tag.name, "/#{tag.object_type.downcase}s/browse/#{tag}", :class => 'posttag' %>
+<% end %></p><% end %>
+<% if controller.action_name == 'show' && controller.controller_name == 'posts' %>
+<!-- AddThis Button BEGIN -->
+<p><a class="addthis_button imagelink" href="http://www.addthis.com/bookmark.php?v=250&amp;username=stemming"><img src="http://s7.addthis.com/static/btn/v2/lg-share-en.gif" width="125" height="16" alt="Bookmark and Share" style="border:0"/></a><script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#username=stemming"></script></p>
+<!-- AddThis Button END -->
+<% end %>
+<% end %>
+
+<div class="content <% if controller.controller_name == 'application' %>frontpage<% end %>">
+<% if post.image_file_name %>
+<% if controller.action_name == 'show' %>
+<%= image_tag post.image.url, {:class => 'postimg'} %>
+<% else %>
+<%= image_tag post.image.url(:thumb), {:class => 'postimg'} %>
+<% end %>
+<% end %>
+<% if controller.action_name == 'show' %>
+<%= auto_link(post.sanitized_content) %>
+<% elsif controller.controller_name == 'application' %>
+<%= auto_link(post.medium_excerpt) %>
+<% else %>
+<%= auto_link(post.longer_excerpt) %>
+<% end %>
+<% if post.image_file_name %>
+<p class="clearing"></p>
+<% end %>
+</div>
+
+
+<% unless controller.controller_name == 'application' %>
+<ul class="horizontal-menu">
+  <li>
+  <% no_comment_count ||= false %>
+  <% unless no_comment_count %>
+  
+      <% if post.comments.count > 0 %>
+        <%= link_to "Read #{pluralize(post.comments.count, 'comment')}", post_url(:id => post, :anchor => :comments) %>
+      <% else %>
+        No comments yet.
+      <% end %>
+  
+  <% end %>
+</li>
+  <% if logged_in? %>
+  <li>
+      <%= link_to_remote "Add comment", :update => 'newcomment' + post.id.to_s, :url => new_post_comment_url(post), :method => 'get' %>
+    </li>
+    <% if post.poster == current_user %>
+      <li>
+     <% unless current_user.admin? %>   <%= link_to "Edit post", edit_post_url(post) %> <% end %>
+        <%= link_to "Delete post", post_url(post), :method => 'delete', :confirm => 'Are you sure?' %>
+      </li>
+    <% end %>    
+	<% if current_user.admin? %>
+<li>
+        <%= link_to "Edit post", edit_post_url(post) %>
+	<% if post.front_page  %>
+	<%= link_to "Remove from front page", :action => "unmake_front_page", :controller => "posts", :id => post.id %>
+	<% else %>
+	<%= link_to "Promote to front page", :action => "make_front_page", :controller => "posts", :id => post.id %>
+	<% end %>
+</li>
+	<% end %>
+    
+  <% end %>
+
+    <li id="newcomment<%= post.id %>">
+      </li>
+
+</ul>
+<% end %>
+</div>
+<p class="clearing"></p>
+</div>

@@ -1,0 +1,42 @@
+<p class="attribution">by <%= post.poster.attribution_slug %></p>
+<div class="content">
+  <%= post.content %>
+</div>
+
+<p class="attribution">
+  posted at <%= post.created_at %>
+in
+<% for t in post.tags %>
+<%= link_to t, :action => 'show', :controller => 'tags', :id => t %><% end %></p>
+
+
+<ul class="horizontal-menu">
+  <li>
+  <% no_comment_count ||= false %>
+  <% unless no_comment_count %>
+  
+      <% if post.comments.count > 0 %>
+        <%= link_to "Read #{pluralize(post.comments.count, 'comment')}", post_url(:id => post, :anchor => :comments) %>
+      <% else %>
+        No comments yet.
+      <% end %>
+  
+  <% end %>
+</li>
+  <% if logged_in? %>
+  <li>
+      <%= link_to_remote "Add comment", :update => 'newcomment', :url => new_post_comment_url(post), :method => 'get' %>
+    </li>
+    <% if post.poster == current_user %>
+      <li>
+        <%= link_to "Edit post", edit_post_url(post) %>
+        <%= link_to "Delete post", post_url(post), :method => 'delete', :confirm => 'Are you sure?' %>
+      </li>
+    <% end %>    
+    
+  <% end %>
+
+    <li id="newcomment">
+      </li>
+
+</ul>

@@ -1,0 +1,57 @@
+/*
+
+#d1e751
+#4dbce9
+#26ade4
+
+*/
+
+/* 
+
+#00a8c6
+#40c0cb
+#f9f2e7
+#aee239
+#8fbe00
+
+*/
+
+/*
+
+#1b676b
+#519548
+#88c425
+#bef202
+#eafde6
+
+*/
+
+.clearing { clear: both; }
+
+h1, h2, h3, h4, h5, .nav { font-family: 'MisoRegular'; }
+h1 { font-family: 'MisoBold'; }
+
+h1 { color: #1b676b; margin-bottom: 0; padding-bottom: 0; }
+h1 span { font-size: 2.5em; }
+h2, h3, h4, h5 { background: #1b676b; padding-bottom: 0; border-bottom: #bef202 2px solid; color: #eafde6; padding: 3px; }
+
+h2 a { text-decoration: none; color: #fff; }
+
+a { color: #519548; font-weight: bold; }
+
+body { background: #eafde6; }
+
+.attribution { color: #1b676b; font-weight: bold; }
+
+.nav { margin-top: 0; padding-top: 0; }
+.nav li { display: inline; font-size: 2em; }
+
+.nav li.current { background: #1b676b; }
+.nav li a { color: #eafde6; text-decoration: none; }
+.nav li { background: #88c425; padding: 10px; margin: 0; }
+
+.comment { border-bottom: #bef202 2px solid; color: #000 !important; }
+
+p, ul { margin-top: 0; margin-bottom: 1em; }
+
+.comment {  border-bottom: #aee239 2px solid; color: #f9f2e7; padding: 3px; }}

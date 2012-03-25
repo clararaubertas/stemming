@@ -1,0 +1,24 @@
+<p><a class="rss" href="<%= @rss %>"><img src="/images/rss_32.png" />Subscribe to all posts</a></p>
+<p>You can also view <a href="/">featured posts chosen by the admins</a> or <a href="/posts/search">search</a> to find a particular post.</p>
+<h2>Browse posts</h2>
+<% tag_cloud @tags, %w(css1 css2 css3 css4 css5 css6) do |tag, css_class| %>
+  <%= link_to tag.name, "/#{tag.object_type.downcase}s/browse/#{tag}", :class => css_class %>
+<% end %>
+<p><%= link_to "(more tags...)", :action => 'browse', :controller => 'posts' %></p>
+
+
+
+<div id="postsads">
+<script type="text/javascript"><!--
+google_ad_client = "pub-2714553174508828";
+/* 120x240, created 12/15/09 */
+google_ad_slot = "5183308190";
+google_ad_width = 120;
+google_ad_height = 240;
+//-->
+</script>
+<script type="text/javascript"
+src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+<p>See an offensive or inappropriate ad? Email <a href="mailto:clara@stemming.org">clara@stemming.org</a> to get it removed.</p>
+</div>

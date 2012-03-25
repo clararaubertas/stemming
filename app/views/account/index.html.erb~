@@ -1,0 +1,55 @@
+<%= render :partial => 'next_step' %>
+<div id="messagesandfriends">
+<h2>Your New Messages and Notifications</h2>
+<p>
+<% if current_user.unread_messages? %>
+<%= link_to pluralize(current_user.unread_message_count, 'New Message'), :controller => 'messages' %>
+<% else %>
+<%= link_to 'Inbox (0)', :controller => 'messages' %>
+<% end %>
+<% if current_user.unread_requests? %>
+<%= link_to pluralize(current_user.unread_request_count, 'New Requests'), :controller => 'requests' %>
+<% else %>
+<%= link_to 'Requests (0)', :controller => 'requests' %>
+<% end %>
+</p>
+
+<% for f in current_user.pending_friends_for_me %>
+<p><%= f.attribution_slug %> wants to be your friend! <%= link_to 'accept', :action => 'accept_friendship', :id => f.id, :controller => 'users' %>
+<%= link_to 'decline', :action => 'decline_friendship', :id => f.id, :controller => 'users' %></p>
+</p>
+<% end %>
+
+<div id="wanttomeet">
+<h2>People You May Want To Meet</h2>
+<% for u in current_user.recommended_friends %>
+<div class="friend">
+<%= render :partial => 'users/mini', :locals => {:u => u, :smaller => "no"} %>
+</div>
+<% end %>
+</div>
+</div>
+
+<div id="friendsposts">
+<h2>Your Friends' Recent Activity</h2>
+<% for p in current_user.friends_activity %>
+<% unless p.item.nil? %>
+<% if p.is_a? Post %>
+<p class="update"><%= p.poster.attribution_slug %> posted <%= link_to p.title, :action => 'show', :controller => 'posts', :id => p %> at <%= p.active_date.strftime("%l:%M%p %b %e") %></p>
+<% elsif p.is_a? User %>
+<p class="update"><%= p.attribution_slug %> updated <%= p.pronoun('gen') %> profile at <%= p.active_date.strftime("%l:%M%p %b %e") %></p>
+<% elsif p.is_a? Comment %>
+<p class="update"><%= p.poster.attribution_slug %> commented on <%= link_to p.post.title, post_url(p.post) %> at <%= p.active_date.strftime("%l:%M%p %b %e") %></p>
+<% elsif p.is_a? UserComment %>
+<p class="update"><%= p.user.attribution_slug %> commented on <%= p.commentable.attribution_slug %>'s profile at <%= p.active_date.strftime("%l:%M%p %b %e") %></p>
+<% elsif p.is_a? Friendship %>
+<% if current_user.friends.include? User.find(p.user_id) %>
+<p class="update"><%= User.find(p.user_id).attribution_slug %> became friends with <%= User.find(p.friend_id).attribution_slug %> at <%= p.active_date.strftime("%l:%M%p %b %e") %></p>
+<% else %>
+<p class="update"><%= User.find(p.friend_id).attribution_slug %> became friends with <%= User.find(p.user_id).attribution_slug %> at <%= p.active_date.strftime("%l:%M%p %b %e") %></p>
+<% end %>
+<% end %>
+<% end %>
+<% end %>
+
+</div>

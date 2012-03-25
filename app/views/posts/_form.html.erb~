@@ -1,0 +1,73 @@
+<div class="field">
+  <label for="post_title">Title:</label><br />
+  <%= form.text_field :title %>
+</div>
+
+<div class="field">
+  <label for="post_permalink">Permalink:</label><br />
+  <%= form.text_field :permalink, :disabled => !post.new_record? %>
+</div>
+
+
+
+<div class="field">
+  <label for="post_published">Published?</label>
+  <%= form.check_box :published %>
+</div>
+
+<div class="field">
+  <label for="post_content">Content (<a href="http://textism.com/tools/textile/">Textile</a> and some HTML allowed):</label><br />
+<%= textile_editor 'post', 'content' -%>
+<%= textile_editor_initialize -%>
+</div>
+<div class="field">
+<p><label for="tag_list">Tags (if your post contains content that would be particularly appealing to younger readers, please include the tag <strong class="frontpagestrong">for teens</strong>):</label><br />
+<style type="text/css">        div.auto_complete {
+          width: 350px;
+          background: #fff;
+        }
+        div.auto_complete ul {
+          border:1px solid #888;
+          margin:0;
+          padding:0;
+          width:100%;
+          list-style-type:none;
+        }
+        div.auto_complete ul li {
+          margin:0;
+          padding:3px;
+        }
+        div.auto_complete ul li.selected {
+          background-color: #ffb;
+        }
+        div.auto_complete ul strong.highlight {
+          color: #800; 
+          margin:0;
+          padding:0;
+        }
+</style><textarea id="post_tag_list" name="post[tag_list]" rows="5" cols="80"><%= @post.tag_list %></textarea><div class="auto_complete" id="post_tag_list_auto_complete"></div><script type="text/javascript">
+//<![CDATA[
+var post_tag_list_auto_completer = new Ajax.Autocompleter('post_tag_list', 'post_tag_list_auto_complete', '/posts/tag_suggestions.js', {method:'get', tokens:','})
+//]]>
+</script>
+</label></p>
+<p><label for="image">Add an Image</label><br/>
+<%= form.file_field :image %></p>
+
+</div>
+<script type="text/javascript">
+  create_permalink = function (s) {
+    s = s.replace(/\W+/g, ' ') // all non-word chars to spaces
+    s = s.replace(/^\s+|\s+$/g, ''); // trim leading/trailing spaces
+    s = s.replace(/\s+/g, '-'); // spaces to dashes
+    s = s.toLowerCase();
+    return s.substring(0, 255);
+  }
+  
+  $('post_title').observe('keyup', function (event) {
+    permalink = $('post_permalink');
+    if (!permalink.disabled) {
+      $('post_permalink').value = create_permalink(this.value);
+    }
+  });
+</script>

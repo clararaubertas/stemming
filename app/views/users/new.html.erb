@@ -1,0 +1,15 @@
+<h2>Join Stemming</h2>
+
+<div class="box">
+
+<% form_for @user, :html => {:multipart => true }  do |f| -%>
+  <%= f.error_messages %>
+<%= render :partial => 'form', :locals => {:f => f} %>
+<%= render :partial => '/captcha' %><br />
+<i>By submitting this form, you agree to the site's <a href="/terms">terms of use</a> and confirm that you are at least 13 years old.</i><br />
+  <p>
+    <%= f.submit 'Join Stemming' %>
+  </p>
+<% end %>
+
+</div>

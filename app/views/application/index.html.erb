@@ -1,0 +1,57 @@
+<div class="grid_9">
+<div class="post <%= @posts.first.state %>">
+     <%= render :partial => "posts/post", :object => @posts.first %>
+</div>
+
+<div class="grid_5 alpha">
+<% for post in @posts - [@posts.first] %>
+  <div class="post <%= post.state %>">
+     <%= render :partial => "posts/post", :object => post %>
+  </div>
+<% end %>
+
+<% if self.respond_to?(:will_paginate) %>
+<div class="box2">  <%= will_paginate @posts %></div>
+<% end %>
+</div>
+
+<div class="grid_4 omega">
+<h3 class="separate">Recent Comments</h3>
+<% @comments.each do |c| %>
+<div class="box2">
+<p class="attribution">posted by <strong><%= link_to image_tag(c.poster.avatar.url(:verysmall)) + " " + c.poster.login, :action => 'show', :id => c.poster, :controller => 'users' %></strong>
+@ <%= c.created_at.strftime("%l:%M%p %m/%e/%y") %><br />
+on <%= link_to image_tag(c.post.poster.avatar.url(:verysmall)) + " " + c.post.title, :action => 'show', :controller => 'posts', :id => c.post, :anchor => "comment_" + c.id.to_s %> </p></div>
+<div class="box commentbox">
+<p class='commentp'><%= c.content_excerpt %></p>
+</div>
+<% end %>
+
+<h3>Most Active Discussions</h3>
+<% for p in Post.find(:all).sort {|p, q| q.comments.size <=> p.comments.size }.first(5) %>
+<div class="box2"><%= p.active_users_link %>
+<p class='clearing'></p>
+</div>
+<% end %>
+
+<h3>Mentors in <%= @mentoring.titleize %></h3>
+<% @mentors.each_with_index do |u, i| %>
+<div class="smalluser <% if i % 3 == 2 %>omega<% end %>">
+<%= render :partial => 'users/supermini', :locals => { :u => u, :smaller => "yes" } %>
+</div>
+<% if i % 3 == 2 %><p class='clearing'></p><% end %>
+<% end %>
+<p class='highlight'><%= link_to "Search for more mentors", {:action => 'search', :controller => 'application', :mentors => 'yes'}, :class => 'button'  %></p>
+
+
+
+<h3>Newest Users</h3>
+<% @newestusers.each_with_index do |u, i| %>
+<div class="smalluser <% if i % 3 == 2 %>omega<% end %>">
+<%= render :partial => 'users/supermini', :locals => { :u => u, :smaller => "yes" } %>
+</div>
+<% if i % 3 == 2 %><p class='clearing'></p><% end %>
+<% end %>
+<p class="clearing">&nbsp;</p>
+
+</div></div>

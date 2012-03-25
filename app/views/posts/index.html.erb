@@ -1,0 +1,34 @@
+<div id="posts">
+
+<div class="grid_5 alpha">
+<% unless @pagetitle.blank? %>
+<h2><%= @pagetitle %></h2>
+<% end %>
+</div>
+<div class="grid_4 omega">
+<h2><a class="rss" href="<%= posts_url(:format => 'atom') %>"><img src="/images/rss_32.png" />subscribe to all posts</a></h2>
+</div>
+<p class="clearing"></p>
+<% if @posts.empty? %>
+
+<div class="alert">
+Sorry, no posts found.
+</div>
+<% end %>
+<% @posts.each do |post| %>
+  <div class="post <%= post.state %>">
+    <a name="post_<%= post.id %>"></a>
+    
+    <%= render :partial => "posts/post", :object => post %>
+    
+  </div>
+<% end %>
+
+
+<div class="box2">
+<%= will_paginate @posts %>
+</div>
+
+
+</div>
+

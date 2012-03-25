@@ -1,0 +1,38 @@
+
+
+<p>When you sign up with Stemming, you'll be able to add blog posts to the site, connect with other users, and share your information so that others can network with you.</p>
+<p>If you opt in to getting emails from us, we'll send you infrequent messages when we make updates to the site.</p>
+<p>We'll never sell your email or share it with anyone else.</p>
+
+<%= error_messages_for :user, :header_message => "Uh-oh!", :message => "We had some problems saving your account:" %>
+<% if flash[:error] %>
+<div class="alert"><%= flash[:error] %></div>
+<% end %>
+<% form_for :user do |f| -%>
+
+<h3>Tell us about yourself.</h3>
+
+<p><label for="first_name">First Name</label><br/>
+<%= f.text_field :first_name %></p>
+
+<p><label for="last_name">Last Name</label><br/>
+<%= f.text_field :last_name %></p>
+
+<p><label for="email">Email</label><br/>
+<%= f.text_field :email %></p>
+
+<h3>Pick a username and password.</h3>
+
+<p><label for="login">Login</label><br/>
+<%= f.text_field :login %></p>
+
+<p><label for="password">Password</label><br/>
+<%= f.password_field :password %></p>
+
+<p><label for="password_confirmation">Confirm Password</label><br/>
+<%= f.password_field :password_confirmation %></p>
+
+<%= render :partial => '/captcha' %>
+
+<p><%= submit_tag 'Sign up' %></p>
+<% end -%>

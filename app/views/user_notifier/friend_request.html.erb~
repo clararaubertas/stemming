@@ -1,0 +1,5 @@
+<%= @friend.login %> has requested to add you as a friend!
+
+Visit your account homepage to view <%= @friend.pronoun('gen') %> profile or to accept or decline the request.
+
+  <%= @url %>

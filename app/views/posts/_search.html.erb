@@ -1,0 +1,11 @@
+<h2>Search Blog Posts</h2>
+<div class="box2">
+<% form_for @post_search, :html => {:method => 'get'} do |f| %>
+<input type="hidden" name="kind" value="post" />
+<p>
+Containing:<br />  <%= f.text_field :content_like %></p>
+<p>Tagged with:<br /> <%= f.text_field :has_tags %></p>
+<p>By Username:<br /> <%= f.text_field :poster_login_like %></p>
+<%= submit_tag 'Search' %>
+<% end %>
+</div>

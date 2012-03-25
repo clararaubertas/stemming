@@ -1,0 +1,123 @@
+<h3>Account Information</h3>
+<p>This information is required.</p>
+<div class="grid_2 alpha">
+<p><label for="login"><strong>Login*</strong></label><br/>
+<%= f.text_field :login %></p>
+</div>
+<div class="grid_2">
+<p><label for="email"><strong>Email*</strong></label><br/>
+<%= f.text_field :email %></p>
+</div>
+<% if @user.new_record? %>
+<div class="grid_2">
+<p><label for="password"><strong>Password*</strong></label><br />
+<%= f.password_field :password %></p>
+</div>
+<div class="grid_2 omega">
+<p><label for="password_confirmation"><strong>Confirm Password*</strong></label><br />
+<%= f.password_field :password_confirmation %></p>
+</div>
+<% end %>
+
+<p style="clear: both;"></p>
+<h3>Personal Information</h3>
+<p>Sharing personal information with Stemming is always optional! You're welcome to sign up under your real name or under a pseudonym, or to leave any of the information below blank.</p>
+<div class="grid_2 alpha">
+<label for="first_name">First Name</label><%= f.text_field :first_name %></div>
+<div class="grid_2"><label for="last_name">Last Name</label>
+<%= f.text_field :last_name %></div>
+<div class="grid_4 omega">
+<p><% unless @user.avatar_file_name.blank? %><%= image_tag @user.avatar.url(:small), :style => 'float: right;' %><% end %>
+<label for="avatar">Upload an Image for your Profile</label><br />
+<%= f.file_field :avatar %></p>
+</div>
+<p class="clearing"></p>
+
+
+<div class="grid_2 alpha">
+<p>
+Gender:
+  <% [ 'Female', 'Male', 'Other', "It's Complicated", 'Prefer not to say' ].each do |gender| %>
+    <br><%= radio_button_tag 'user[gender]', gender, @user.gender == gender %>
+    <%= label_tag "gender_#{gender}", gender.humanize %>
+  <% end %>
+<br /><small>(determines whether you're referred to as "she", "he", or "they" on the site)</small>
+</p>
+</div>
+<div class="grid_6 omega">
+<p><label for="birthday">Birthday (leave blank if you prefer not to share your age)</label><br />
+<%= f.date_select :birthday, :start_year => 110.years.ago.year, :end_year => 13.years.ago.year, :include_blank => true %></p>
+<p>
+<label for="timezone">Your Timezone</label><br />
+<%= f.time_zone_select :time_zone, ActiveSupport::TimeZone.all, :include_blank => true %></p>
+</div>
+
+<div class="grid_2">
+<p><label for="city">City</label><br/>
+<%= f.text_field :city %></p>
+</div>
+<div class="grid_1">
+<p><label for="state">State</label><br/>
+<%= f.text_field :state, :size => 3 %></p>
+</div>
+<div class="grid_1">
+<p><label for="zip">Zip</label><br/>
+<%= f.text_field :zip, :size => 6 %></p>
+</div>
+<div class="grid_2 omega">
+<p><label for="country">Country</label><br/>
+<%= f.text_field :country %></p>
+</div>
+
+<p class="clearing"></p>
+
+<h3>Tell Us About Yourself</h3>
+<p><label for="bio">Describe yourself</label><br/>
+<%= f.text_area :bio, :size => '80x5' %></p>
+
+<p><label for="education">Describe your educational background</label><br/>
+<%= f.text_area :education, :size => '80x5' %></p>
+
+<p><label for="career">Describe your career/work experience</label><br/>
+<%= f.text_area :career, :size => '80x5' %></p>
+
+<p><label for="tag_list">Add comma-separated interests so other users can find you (e.g. "open-source software, microbiology, topology")</label><br />
+<style type="text/css">        div.auto_complete {
+          width: 350px;
+          background: #fff;
+        }
+        div.auto_complete ul {
+          border:1px solid #888;
+          margin:0;
+          padding:0;
+          width:100%;
+          list-style-type:none;
+        }
+        div.auto_complete ul li {
+          margin:0;
+          padding:3px;
+        }
+        div.auto_complete ul li.selected {
+          background-color: #ffb;
+        }
+        div.auto_complete ul strong.highlight {
+          color: #800; 
+          margin:0;
+          padding:0;
+        }
+</style><textarea id="user_tag_list" name="user[tag_list]" rows="5" cols="80"><%= @user.tag_list %></textarea><div class="auto_complete" id="user_tag_list_auto_complete"></div><script type="text/javascript">
+//<![CDATA[
+var user_tag_list_auto_completer = new Ajax.Autocompleter('user_tag_list', 'user_tag_list_auto_complete', '/users/tag_suggestions.js', {method:'get', tokens:','})
+//]]>
+
+</script>
+</label></p>
+
+<p><label for="websites">Add your other websites, prefaced with "http://" (personal, portfolio, blog, Twitter, Facebook, LinkedIn, whatever!)</label><br/>
+<%= f.text_area :websites, :size => '80x5' %></p>
+
+
+
+<p>
+<%= f.check_box :mentoring %>
+<label for="mentoring">Interested in mentoring?</label></p>

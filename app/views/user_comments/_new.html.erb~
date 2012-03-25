@@ -1,0 +1,11 @@
+<% form_for(@user_comment) do |f| %>
+<input type="hidden" name="user_comment[user_id]" value="<%= current_user.id %>" />
+<input type="hidden" name="user_comment[commentable_id]" value="<%= params[:commentable_id] %>" />
+<input type="hidden" name="user_comment[commentable_type]" value="User" />
+  <%= f.error_messages %>
+  <%= f.text_area :comment %>
+  <p>
+    <%= f.submit 'Add Comment' %>
+  </p>
+<% end %>
+

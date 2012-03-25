@@ -1,0 +1,40 @@
+<div class="grid_5 alpha"><h2>Inbox</h2></div> <div class="grid_4 omega"><div class="topbox"><%= link_to "Write Message", new_user_message_path(@user), :class => 'button' %> <a href="/messages?mailbox=sent" class="button">sent messages</a></div></div>
+<table>
+	<tr>
+		<th><div class="box2">Delete?</div></th>
+		<th><div class="box2">New?</div></th>
+		<th><div class="box2">Subject</div></th>
+		<th><div class="box2">Sender</div></th>
+		<th><div class="box2">Sent</div></th>
+	</tr>
+	<% if @messages.size == 0 %>
+		<tr>
+			<td colspan="4">
+				No messages
+			</td>
+		</tr>
+	<% else %>
+		<% for message in @messages %>
+			<tr>
+				<td><%= check_box_tag "delete[]", message.id %></td>
+<td>
+<% unless message.read? %>
+*
+<% end %>
+				<td>
+
+					  <%= link_to h(message.subject), user_message_path(@user, message) %>
+
+				</td>
+				<td><%= link_to h(message.sender.login), user_path(message.sender) %></td>
+		    <td><%=h message.created_at.to_s(:long) %></td>
+			</tr>
+		<% end %>
+		<tr>
+			<td colspan="4">
+				<%= submit_tag "Delete" %>
+			</td>
+		</tr>
+	<% end %>
+</table>
+

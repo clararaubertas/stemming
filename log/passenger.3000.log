@@ -1,0 +1,78 @@
+WARNING: Nokogiri was built against LibXML version 2.6.31, but has dynamically loaded 2.7.5
+[ pid=21947 thr=140339191367440 file=ext/common/Watchdog.cpp:883 time=2011-10-17 22:57:08.525 ]: Some Phusion Passenger agent processes did not exit in time, forcefully shutting down all.
+WARNING: Nokogiri was built against LibXML version 2.6.31, but has dynamically loaded 2.7.5
+[ pid=22043 thr=140489223485712 file=ext/nginx/HelperAgent.cpp:568 time=2011-10-17 23:00:04.136 ]: Couldn't forward the HTTP response back to the HTTP client: It seems the user clicked on the 'Stop' button in his browser.
+[ pid=22043 thr=140489223084304 file=ext/nginx/HelperAgent.cpp:568 time=2011-10-17 23:00:22.700 ]: Couldn't forward the HTTP response back to the HTTP client: It seems the user clicked on the 'Stop' button in his browser.
+WARNING: Nokogiri was built against LibXML version 2.6.31, but has dynamically loaded 2.7.5
+[ pid=22186 thr=140730338109712 file=ext/nginx/HelperAgent.cpp:568 time=2011-10-20 18:12:17.890 ]: Couldn't forward the HTTP response back to the HTTP client: It seems the user clicked on the 'Stop' button in his browser.
+WARNING: Nokogiri was built against LibXML version 2.6.31, but has dynamically loaded 2.7.5
+WARNING: Nokogiri was built against LibXML version 2.6.31, but has dynamically loaded 2.7.5
+[ pid=22186 thr=140730312595728 file=ext/nginx/HelperAgent.cpp:568 time=2011-10-21 17:22:11.4 ]: Couldn't forward the HTTP response back to the HTTP client: It seems the user clicked on the 'Stop' button in his browser.
+[ pid=22186 thr=140730313197840 file=ext/nginx/HelperAgent.cpp:568 time=2011-10-21 17:24:26.586 ]: Couldn't forward the HTTP response back to the HTTP client: It seems the user clicked on the 'Stop' button in his browser.
+WARNING: Nokogiri was built against LibXML version 2.6.31, but has dynamically loaded 2.7.5
+[ pid=22186 thr=140730311792912 file=ext/nginx/HelperAgent.cpp:568 time=2011-10-21 17:56:13.32 ]: Couldn't forward the HTTP response back to the HTTP client: It seems the user clicked on the 'Stop' button in his browser.
+[ pid=22186 thr=140730311391504 file=ext/nginx/HelperAgent.cpp:568 time=2011-10-21 17:56:13.61 ]: Couldn't forward the HTTP response back to the HTTP client: It seems the user clicked on the 'Stop' button in his browser.
+[ pid=22186 thr=140730311592208 file=ext/nginx/HelperAgent.cpp:568 time=2011-10-21 17:57:05.896 ]: Couldn't forward the HTTP response back to the HTTP client: It seems the user clicked on the 'Stop' button in his browser.
+WARNING: Nokogiri was built against LibXML version 2.6.31, but has dynamically loaded 2.7.5
+-> "220 mx.google.com ESMTP d32sm19468259yhj.17\r\n"
+<- "EHLO stemming.org\r\n"
+-> "250-mx.google.com at your service, [209.20.78.229]\r\n"
+-> "250-SIZE 35882577\r\n"
+-> "250-8BITMIME\r\n"
+-> "250-STARTTLS\r\n"
+-> "250 ENHANCEDSTATUSCODES\r\n"
+<- "STARTTLS\r\n"
+-> "220 2.0.0 Ready to start TLS\r\n"
+<- "EHLO stemming.org\r\n"
+-> "250-mx.google.com at your service, [209.20.78.229]\r\n"
+-> "250-SIZE 35882577\r\n"
+-> "250-8BITMIME\r\n"
+-> "250-AUTH LOGIN PLAIN XOAUTH\r\n"
+-> "250 ENHANCEDSTATUSCODES\r\n"
+<- "AUTH PLAIN AGFkbWluQHN0ZW1taW5nLm9yZwBzdGVtbWVy\r\n"
+-> "235 2.7.0 Accepted\r\n"
+<- "MAIL FROM:<admin@stemming.org>\r\n"
+-> "250 2.1.0 OK d32sm19468259yhj.17\r\n"
+<- "RCPT TO:<clara@clararaubertas.net>\r\n"
+-> "250 2.1.5 OK d32sm19468259yhj.17\r\n"
+<- "DATA\r\n"
+-> "354  Go ahead d32sm19468259yhj.17\r\n"
+writing message from String
+wrote 430 bytes
+-> "250 2.0.0 OK 1319239355 d32sm19468259yhj.17\r\n"
+<- "QUIT\r\n"
+-> "221 2.0.0 closing connection d32sm19468259yhj.17\r\n"
+WARNING: Nokogiri was built against LibXML version 2.6.31, but has dynamically loaded 2.7.5
+WARNING: Nokogiri was built against LibXML version 2.6.31, but has dynamically loaded 2.7.5
+[ pid=22186 thr=140730312395024 file=ext/nginx/HelperAgent.cpp:568 time=2011-10-22 16:02:20.37 ]: Couldn't forward the HTTP response back to the HTTP client: It seems the user clicked on the 'Stop' button in his browser.
+[ pid=22186 thr=140730313398544 file=ext/nginx/HelperAgent.cpp:568 time=2011-10-22 16:19:57.89 ]: Couldn't forward the HTTP response back to the HTTP client: It seems the user clicked on the 'Stop' button in his browser.
+[ pid=22186 thr=140730314000656 file=ext/nginx/HelperAgent.cpp:568 time=2011-10-22 16:19:57.898 ]: Couldn't forward the HTTP response back to the HTTP client: It seems the user clicked on the 'Stop' button in his browser.
+WARNING: Nokogiri was built against LibXML version 2.6.31, but has dynamically loaded 2.7.5
+/var/www/stemming/stemmingcode.git/app/views/messages/show.html.erb:18: warning: don't put space before argument parentheses
+WARNING: Nokogiri was built against LibXML version 2.6.31, but has dynamically loaded 2.7.5
+/var/www/stemming/stemmingcode.git/app/views/tags/index.html.erb:1: warning: Object#type is deprecated; use Object#class
+/var/www/stemming/stemmingcode.git/app/views/tags/index.html.erb:1: warning: Object#type is deprecated; use Object#class
+/var/www/stemming/stemmingcode.git/app/views/tags/index.html.erb:1: warning: Object#type is deprecated; use Object#class
+/var/www/stemming/stemmingcode.git/app/views/tags/index.html.erb:1: warning: Object#type is deprecated; use Object#class
+[ pid=22186 thr=140730337306896 file=ext/nginx/HelperAgent.cpp:568 time=2011-10-23 13:45:52.90 ]: Couldn't forward the HTTP response back to the HTTP client: It seems the user clicked on the 'Stop' button in his browser.
+WARNING: Nokogiri was built against LibXML version 2.6.31, but has dynamically loaded 2.7.5
+[ pid=22186 thr=140730313398544 file=ext/nginx/HelperAgent.cpp:568 time=2011-10-23 14:29:41.11 ]: Couldn't forward the HTTP response back to the HTTP client: It seems the user clicked on the 'Stop' button in his browser.
+WARNING: Nokogiri was built against LibXML version 2.6.31, but has dynamically loaded 2.7.5
+warning: peer certificate won't be verified in this SSL session
+warning: peer certificate won't be verified in this SSL session
+[ pid=22186 thr=140730312997136 file=ext/nginx/HelperAgent.cpp:568 time=2011-10-23 16:03:47.823 ]: Couldn't forward the HTTP response back to the HTTP client: It seems the user clicked on the 'Stop' button in his browser.
+[ pid=22186 thr=140730312595728 file=ext/nginx/HelperAgent.cpp:568 time=2011-10-23 16:03:56.311 ]: Couldn't forward the HTTP response back to the HTTP client: It seems the user clicked on the 'Stop' button in his browser.
+WARNING: Nokogiri was built against LibXML version 2.6.31, but has dynamically loaded 2.7.5
+[ pid=22186 thr=140730313197840 file=ext/nginx/HelperAgent.cpp:568 time=2011-10-23 16:06:53.349 ]: Couldn't forward the HTTP response back to the HTTP client: It seems the user clicked on the 'Stop' button in his browser.
+[ pid=22186 thr=140730312194320 file=ext/nginx/HelperAgent.cpp:568 time=2011-10-23 16:08:03.850 ]: Couldn't forward the HTTP response back to the HTTP client: It seems the user clicked on the 'Stop' button in his browser.
+[ pid=22186 thr=140730311993616 file=ext/nginx/HelperAgent.cpp:568 time=2011-10-23 16:08:11.957 ]: Couldn't forward the HTTP response back to the HTTP client: It seems the user clicked on the 'Stop' button in his browser.
+[ pid=22186 thr=140730311391504 file=ext/nginx/HelperAgent.cpp:568 time=2011-10-23 16:13:28.699 ]: Couldn't forward the HTTP response back to the HTTP client: It seems the user clicked on the 'Stop' button in his browser.
+[ pid=22186 thr=140730311792912 file=ext/nginx/HelperAgent.cpp:568 time=2011-10-23 16:16:15.691 ]: Couldn't forward the HTTP response back to the HTTP client: It seems the user clicked on the 'Stop' button in his browser.
+[ pid=22186 thr=140730312395024 file=ext/nginx/HelperAgent.cpp:568 time=2011-10-23 16:24:43.626 ]: Couldn't forward the HTTP response back to the HTTP client: It seems the user clicked on the 'Stop' button in his browser.
+[ pid=22186 thr=140730311190800 file=ext/nginx/HelperAgent.cpp:568 time=2011-10-23 16:46:04.424 ]: Couldn't forward the HTTP response back to the HTTP client: It seems the user clicked on the 'Stop' button in his browser.
+[ pid=22186 thr=140730338511120 file=ext/nginx/HelperAgent.cpp:568 time=2011-10-23 16:46:04.424 ]: Couldn't forward the HTTP response back to the HTTP client: It seems the user clicked on the 'Stop' button in his browser.
+[ pid=22186 thr=140730311592208 file=ext/nginx/HelperAgent.cpp:568 time=2011-10-23 16:47:05.38 ]: Couldn't forward the HTTP response back to the HTTP client: It seems the user clicked on the 'Stop' button in his browser.
+warning: peer certificate won't be verified in this SSL session
+warning: peer certificate won't be verified in this SSL session
+2011/10/24 10:59:54 [crit] 22221#0: *10489 connect() to unix:/passenger_helper_server failed (2: No such file or directory) while connecting to upstream, client: 65.96.172.195, server: _, request: "GET / HTTP/1.1", upstream: "passenger:unix:/passenger_helper_server:", host: "209.20.78.229:3000"
+2011/10/24 11:00:07 [crit] 22221#0: *10489 connect() to unix:/passenger_helper_server failed (2: No such file or directory) while connecting to upstream, client: 65.96.172.195, server: _, request: "GET / HTTP/1.1", upstream: "passenger:unix:/passenger_helper_server:", host: "209.20.78.229:3000"

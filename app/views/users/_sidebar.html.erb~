@@ -1,0 +1,38 @@
+<h3>Mentors in <%= @mentoring.titleize %></h3>
+<% @mentors.each do |u| %>
+<div class="frontpagefriend">
+<%= render :partial => 'users/supermini', :locals => { :u => u, :smaller => "yes" } %>
+</div>
+<% end %>
+<p><%= link_to "Search for more mentors...", :action => 'search', :controller => 'users' %></p>
+<h3>Newest Users</h3>
+<% @newestusers.each do |u| %>
+<div class="frontpagefriend">
+<%= render :partial => 'users/supermini', :locals => { :u => u, :smaller => "yes" } %>
+</div>
+<% end %>
+<h3>Most Active Users</h3>
+<% @activeusers.each do |u| %>
+<div class="frontpagefriend">
+<%= render :partial => 'users/supermini', :locals => { :u => u, :smaller => "yes" } %>
+</div>
+<% end %>
+<p class="clearing">&nbsp;</p>
+<div id="facebook">
+<script type="text/javascript" src="http://static.ak.connect.facebook.com/js/api_lib/v0.4/FeatureLoader.js.php/en_US"></script><script type="text/javascript">FB.init("07affd9bde516e6e2212195c850eaf04");</script><fb:fan profile_id="308617573099" stream="0" connections="10" logobar="1" width="300" height="283"></fb:fan><div style="font-size:8px; padding-left:10px"><a href="http://www.facebook.com/pages/stemmingorg-Women-in-Science-Tech-Engineering-and-Math/308617573099">stemming.org : Women in Science, Tech, Engineering, and Math</a> on Facebook</div>
+</div>
+
+<div id="postsads">
+<script type="text/javascript"><!--
+google_ad_client = "pub-2714553174508828";
+/* 120x240, created 12/15/09 */
+google_ad_slot = "5183308190";
+google_ad_width = 120;
+google_ad_height = 240;
+//-->
+</script>
+<script type="text/javascript"
+src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+<p>See an offensive or inappropriate ad? Email <a href="mailto:clara@stemming.org">clara@stemming.org</a> to get it removed.</p>
+</div>

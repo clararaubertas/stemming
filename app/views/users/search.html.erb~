@@ -1,0 +1,19 @@
+<h2>Search Users</h2>
+<% form_for @search, :html => {:method => 'get'} do |f| %>
+<table>
+<tr><td>Username:</td> <td><%= f.text_field :login_like %></td></tr>
+<tr><td>First Name:</td> <td><%= f.text_field :first_name_like %></td></tr>
+<tr><td>Last Name:</td> <td><%= f.text_field :last_name_like %></td></tr>
+<tr><td>Bio:</td> <td><%= f.text_field :bio_like %></td></tr>
+<tr><td>Career:</td> <td><%= f.text_field :career_like %></td></tr>
+<tr><td>Interests:</td> <td><%= f.text_field :has_tags %></td></tr>
+<tr><td>Education:</td> <td><%= f.text_field :education_like %></td></tr>
+</table>
+<p>Age between:</td> <td><%= f.select :age_gte, ['any'].concat((0..120).to_a) %> and <%= f.select :age_lte, ['any'].concat((0..120).to_a.reverse) %></p>
+<p><%= f.check_box :mentors %>Potential Mentor</p>
+<p><%= f.check_box :mentees %>Potential Mentee</p>
+<p><%= f.check_box :networkers %>Potential Networking Contact</p>
+<p>Located Near: <input type="text" name="location" /></p>
+<%= submit_tag 'Search' %>
+<% end %>
+

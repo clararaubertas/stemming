@@ -1,0 +1,10 @@
+windows_live:
+  appid: 0000000040032F0E
+  secret: kmFNoJzKLjmYavvQlUqlQH2KKIUz5nso
+  security_algorithm: wsignin1.0
+  return_url: http://stemming.org/users/invite
+  policy_url: http://stemming.org/privacy
+
+yahoo:
+  appid: HZ2W7h5i
+  secret: 9ddb35bdf89badff05f56959bcb9421e548e3ecc

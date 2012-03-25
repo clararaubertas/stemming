@@ -1,0 +1,4 @@
+<%= link_to image_tag(u.avatar.url(:small)), {:action => 'show', :id => u, :controller => 'users'}, :class => 'imagelink' %>
+<p><strong><%= link_to u.login, :action => 'show', :id => u, :controller => 'users' %></strong></p>
+<p><% unless u.city.blank? %><%= u.city %><% unless u.state.blank? && u.country.blank? %>, <% end %><% end %><%= u.state %> <% unless u.state.blank? || u.country.blank? %><br /><% end %><%= u.country %></p>
+<p class="clearing"></p>

@@ -1,0 +1,187 @@
+<% if logged_in? %>
+<% if current_user == @user %>
+<%= render :partial => 'account/next_step' %>
+<% end %>
+<% end %>
+<div class="grid_3 alpha">
+<h2><%= @user.login %></h2>
+<% if logged_in? && current_user.admin? %>
+<p class="city"><%= link_to "Delete user", user_url(@user), :method => 'delete', :confirm => 'Are you sure?' %></p>
+<% end %>
+<h3><%= @user.full_name %></h3>
+<% unless @user.city.blank? && @user.birthday.blank? && @user.state.blank? && @user.country.blank? && @user.zip.blank? %>
+<div class="box2">
+<% unless @user.city.blank? %><%= @user.city %><% unless @user.state.blank? && @user.country.blank? %>, <% end %><% end %>
+<%= @user.state %> <%= @user.zip %><br /><%= @user.country %><br />
+<% unless @user.birthday.blank? %><p class="age"><%= @user.age_range %><% end %>
+</div>
+<% end %>
+
+<div class="photo">
+<%= image_tag @user.avatar.url(:medium) %>
+
+</div>
+<br />
+
+<% if logged_in? %>
+<div class="box2">
+
+<% if @user == current_user %>
+<p>This is you. <%= link_to 'Edit Profile', :action => 'edit', :controller => 'users', :id => current_user %></p>
+
+<% if !current_user.pending_friends_for_me.empty? %>
+<p>You have friend requests pending.</p>
+<% end %>
+
+<% else %>
+
+<% if !(current_user.friends.include?(@user)) && !(current_user.pending_friends.include?(@user)) %>
+<p class="highlight"><%= link_to 'add as friend', {:action => 'request_friendship', :id => @user}, :class => 'button' %></p>
+<% end %>
+
+<p class="highlight"><%= link_to 'message ' + @user.login, {:action => 'new', :controller => 'messages', :to => @user.login}, :class => 'button smaller' %></p>
+
+<% end %>
+
+<% if logged_in? && (@user.is_friends_with? current_user) %>
+<p>You are friends with <%= @user.login %>. <%= link_to 'Remove Friend', :action => 'cancel_friendship', :id => @user %></p>
+<% elsif current_user.pending_friends_for_me.include?(@user) %>
+<p><%= @user.login.titleize %> wants to be your friend.
+<%= link_to 'accept', {:action => 'accept_friendship', :id => @user}, :class => 'button' %>
+<%= link_to 'decline', {:action => 'decline_friendship', :id => @user}, :class => 'button' %></p>
+<% elsif @user.pending_friends_for_me.include?(current_user) %>
+<p>You have a friend request pending with <%= @user.login %>.</p>
+<% end %>
+
+
+</div>
+<% end %>
+
+<div class="user_comments">
+  <h3>Comments on <%= @user.login %>'s Profile</h3>
+  <% unless logged_in? %>
+  <p><a href="/account/signup">Join Stemming</a> to leave a comment!</p>
+  <% end %>
+  <% if @user.user_comments.count == 0 %>
+    <p>There are currently no comments. <% if logged_in? %><%= link_to_remote "Add one?", :update => 'newcomment', :url => {:commentable_id => @user.id, :action => 'new', :controller => 'user_comments'}, :method => 'get' %><% end %></p>
+    <div id="newcomment"></div>
+  <% else %>
+    <p><%= link_to_remote "Add comment", :update => 'newcomment', :url => {:commentable_id => @user.id, :action => 'new', :controller => 'user_comments'}, :method => 'get' %></p>
+    <div id="newcomment"></div>
+    <% @comments.each do |comment| %>
+      <%= render :partial => "user_comments/comment", :object => comment %>
+    <% end %>
+<p class="clearing"><%= will_paginate @comments, :param_name => 'comment_page' %></p>
+  <% end %>
+</div>
+
+
+<div class="friends">
+<h2><%= @user.login.titleize %>'s Contacts</h2>
+<% if @user.friends.empty? %>
+<p>None yet!</p>
+<% end %>
+<% if @user.friends.size > 12 %>
+<% for i in (0..23) %>
+<% if @friends[i] %>
+<p class="city"><%= @friends[i].attribution_slug %></p>
+<% end %>
+<% end %>
+
+
+<% else %>
+<% for f in @friends %>
+<% if @user.friends.size > 4 %>
+<div class="smalluser box2">
+<%= render :partial => 'users/supermini', :locals => { :u => f, :smaller => "yes" } %>
+</div>
+<% else %>
+<div class="box2">
+<%= render :partial => 'mini', :locals => { :u => f, :smaller => "no" } %>
+</div>
+<% end %>
+<% end %>
+<% end %>
+<p class="clearing"></p>
+<% if @friends.size > 12 %>
+<div class="box2"><%= will_paginate @friends, :param_name => 'friend_page' %></div>
+<% end %>
+</div>
+
+</div>
+
+<div class="grid_6 omega">
+<div class="bio">
+<% unless @user.bio.blank? %>
+<h3>Bio</h3>
+<div class="box">
+<%= auto_link(@user.sanitized_bio) %>
+</div>
+<% end %>
+<div class="grid_3 alpha">
+<% unless @user.education.blank? %>
+<h3>Education</h3>
+<div class="box">
+<%= auto_link(@user.sanitized_education) %>
+</div>
+<% end %>
+<% unless @user.career.blank? %>
+<h3>Career</h3>
+<div class="box">
+<%= auto_link(@user.sanitized_career) %>
+</div>
+<% end %>
+</div>
+<div class="grid_3 omega" >
+<% unless @user.tags.blank? %>
+<h3>Interests</h3>
+<p>
+<% for tag in @user.tags.sort_by{|t| t.name} %>
+<%= link_to tag.name, "/#{tag.object_type.downcase}s/browse/#{tag}" %>
+<% end %>
+</p>
+<% end %>
+<% unless @user.websites.blank? %>
+<h3>Websites</h3>
+<p>
+<%= auto_link(textilize_without_paragraph(@user.websites)) %>
+</p>
+<% end %>
+</div>
+</div>
+
+<h2 style="clear: both;"><%= @user.login.titleize %>'s Blog Entries</h2>
+<% if @user.posts.empty? %>
+<p>None yet!</p>
+<% end %>
+<% for post in @blog_entries %>
+<h3>      <%= link_to post.display_title, post_url(post) %></h3>
+<div class="box">
+<strong><%= post.created_at.strftime("%l:%M%p %m/%d/%Y") %></strong><br />
+<%= post.excerpt %><br />
+<%= link_to (pluralize post.comments.size, 'comment'), post_url(post) %>
+</div>
+<%   end %>
+<% if @blog_entries.size > 2 %>
+<div class="box2"><%= will_paginate @blog_entries, :param_name => 'blog_page' %></div>
+<% end %>
+
+<div class="blog_comments">
+<h2><%= @user.login.titleize %>'s Comments</h2>
+<% if @user.comments.empty? %>
+<p>None yet!</p>
+<% end %>
+
+<% for c in @blog_comments %>
+
+<div class="box">on <%= image_tag c.post.poster.avatar.url('verysmall') %> <%= link_to c.post.title, :action => 'show', :controller => 'posts', :id => c.post, :anchor => "comment_" + c.id.to_s %>
+at <%= c.created_at.strftime("%l:%M%p %m/%e/%y") %><br />
+<%= c.content_excerpt %></div>
+
+<% end %>
+<% if @blog_comments.size > 2 %>
+<div class="box2"><%= will_paginate @blog_comments, :param_name => 'blog_comment_page' %></div>
+<% end %>
+</div>
+
+</div>
