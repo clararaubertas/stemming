@@ -1,0 +1,23 @@
+<div id="posts">
+
+
+<%= render :partial => "post", :object => @post, :locals => { :no_comment_count => true } %>
+
+
+<div class="comments">
+  <a name="comments"></a>
+  <h2>Comments</h2>
+  <% unless logged_in? %>
+  <p><a href="/account/signup">Create a free account</a> to comment on this post!</p>
+  <% end %>
+  <% if @post.comments.count == 0 %>
+    <p>There are currently no comments.</p>
+  <% else %>
+    <% @post.comments.each do |comment| %>
+      <%= render :partial => "comments/comment", :object => comment %>
+    <% end %>
+  <% end %>
+</div>
+
+
+</div>

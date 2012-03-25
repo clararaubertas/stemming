@@ -1,0 +1,11 @@
+<h2>Edit Your Profile</h2>
+<div class="box">
+<%= error_messages_for :user %>
+
+<% form_for @user, :html => {:multipart => true }  do |f| -%>
+<%= render :partial => 'form', :locals => {:f => f} %>
+  <%= f.error_messages %>
+
+<p><%= submit_tag 'Update Profile' %></p>
+<% end -%>
+</div>

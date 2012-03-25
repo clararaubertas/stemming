@@ -1,0 +1,39 @@
+<div id="usersearch">
+<h2>Users matching <%= params[:search] %></h2>
+<% if @users.empty? %>
+<div class="alert">
+Sorry, no users found.
+</div>
+<%= @prms %>
+<% end %>
+
+<% @users.each do |user| %>
+<div class="friend">
+<%= render :partial => 'users/mini', :locals => { :u => user, :smaller => "no" } %>
+</div>
+<% end %>
+<%= will_paginate @users, :param_name => 'user_page' %>
+</div>
+<div id="postsearch">
+<h2>Posts matching <%= params[:search] %></h2>
+<% if @posts.empty? %>
+<div class="alert">
+Sorry, no posts found.
+</div>
+<% end %>
+<% @posts.each do |post| %>
+  <div class="post <%= post.state %>">
+    <a name="post_<%= post.id %>"></a>
+    <h3 class="posttitle">
+      <%= link_to post.display_title, post_url(post) %>
+    </h3>    
+    
+    <%= render :partial => "posts/post", :object => post %>
+    
+  </div>
+<% end %>
+
+
+  <%= will_paginate @posts, :param_name => 'post_page' %>
+
+</div>

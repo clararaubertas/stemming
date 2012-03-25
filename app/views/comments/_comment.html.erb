@@ -1,0 +1,24 @@
+
+<div class="box">
+<a name="comment_<%= comment.id %>"></a>
+  <div class="content">
+    <div class="side">
+    <%= link_to image_tag(comment.poster.avatar.url(:small)), {:action => 'show', :controller => 'users', :id => comment.poster}, :class => 'imagelink' %>
+
+</div>
+<p><strong>at <%= comment.created_at.strftime("%l:%M%p %m/%d/%y") %>     <%= link_to comment.poster.login, :action => 'show', :controller => 'users', :id => comment.poster %> said:</strong></p>
+<%= auto_link(comment.sanitized_content, :all, :rel => "nofollow") %>
+<p class="clearing"></p>
+  
+  <% if logged_in? and comment.poster == current_user %>
+    <ul class="horizontal-menu">
+      <li>
+      <%= link_to_remote "edit comment", :update => 'comment' + comment.id.to_s, :url => edit_post_comment_url(comment.post, comment), :method => 'get' %>
+      <div id="comment<%= comment.id %>"></div>
+</li>
+<li>        <%= link_to "delete comment", post_comment_url(comment.post, comment), :method => 'delete' %>
+</ul>
+
+  <% end %>
+  </div>
+</div>

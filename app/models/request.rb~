@@ -1,0 +1,8 @@
+class Request < ActiveRecord::Base
+  belongs_to :user
+
+  def recipient
+    User.find(self.recipient_id)
+  end
+
+end

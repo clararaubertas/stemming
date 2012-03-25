@@ -1,0 +1,23 @@
+<h2>Invite your friends to stemming.org!</h2>
+
+<form action="/users/invite" method="post">
+<%= token_tag %>
+<h3>your message:</h3>
+<textarea rows="10" cols="80" name="message">
+<% if current_user.first_name && current_user.last_name %><%= current_user.first_name + ' ' + current_user.last_name %><% else %><%= current_user.email %><% end %> (<%= current_user.login %> on Stemming) has invited you to join Stemming.org -- the online community for women and girls interested in science, technology, engineering, and mathematics!
+
+Just visit http://stemming.org to sign up -- then you'll be able to add blog posts, comment on other users' posts and profiles, make friends with other users with similar interests, and find mentors and networking connections in your field.
+</textarea>
+
+<h3>send to:</h3>
+<p><a href="<%= Contacts::Google.authentication_url('http://stemming.org/users/invite/google') %>">Import your Google contacts to this box</a> (you'll be able to edit them)</p>
+<textarea rows="10" cols="80" name="recipients">
+<% if @contacts %>
+<% for c in @contacts %><% if params[:m] == 'google' %><% if c.email %><%= c.email %><% if c != @contacts.last %>,<% end %><% end %><% end %><% end %>
+<% end %>
+</textarea>
+
+<br />
+<input type="submit" value="Send Message" />
+
+</form>

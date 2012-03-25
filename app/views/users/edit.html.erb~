@@ -1,0 +1,107 @@
+<%= error_messages_for :user %>
+<% form_for @user, :html => {:multipart => true }  do |f| -%>
+
+<p><label for="login">Login</label><br/>
+<%= f.text_field :login %></p>
+
+<p><label for="first_name">First Name</label><br/>
+<%= f.text_field :first_name %></p>
+
+<p><label for="last_name">Last Name</label><br/>
+<%= f.text_field :last_name %></p>
+
+<p><label for="avatar">Upload an Image for your Profile</label><br/>
+<%= f.file_field :avatar %></p>
+
+
+<p><label for="email">Email</label><br/>
+<%= f.text_field :email %></p>
+
+<p><label for="timezone">Your Timezone</label><br />
+<%= f.time_zone_select :time_zone, ActiveSupport::TimeZone.all, :include_blank => true %></p>
+
+<p>Gender:
+<small>(determines whether you're referred to as "she", "he", or "they" on the site)</small>
+  <% [ 'Female', 'Male', 'Other', "It's Complicated", 'Prefer not to say' ].each do |gender| %>
+    <br><%= radio_button_tag 'user[gender]', gender, @user.gender == gender %>
+    <%= label_tag "gender_#{gender}", gender.humanize %>
+  <% end %></p>
+
+<p><label for="city">City</label><br/>
+<%= f.text_field :city %></p>
+
+<p><label for="state">State</label><br/>
+<%= f.text_field :state, :size => 3 %></p>
+
+<p><label for="zip">Zip</label><br/>
+<%= f.text_field :zip, :size => 6 %></p>
+
+<p><label for="country">Country</label><br/>
+<%= f.text_field :country %></p>
+
+
+<p><label for="birthday">Birthday (leave blank if you prefer not to share your age)</label><br />
+<%= f.date_select :birthday, :start_year => 110.years.ago.year, :include_blank => true %></p>
+
+<p><label for="bio">Describe yourself</label><br/>
+<%= f.text_area :bio, :size => '80x5' %></p>
+
+<p><label for="education">Describe your educational background</label><br/>
+<%= f.text_area :education, :size => '80x5' %></p>
+
+<p><label for="career">Describe your career/work experience</label><br/>
+<%= f.text_area :career, :size => '80x5' %></p>
+
+<p><label for="tag_list">Add comma-separated interests so other users can find you (e.g. "open-source software, microbiology, topology")</label><br />
+<style type="text/css">        div.auto_complete {
+          width: 350px;
+          background: #fff;
+        }
+        div.auto_complete ul {
+          border:1px solid #888;
+          margin:0;
+          padding:0;
+          width:100%;
+          list-style-type:none;
+        }
+        div.auto_complete ul li {
+          margin:0;
+          padding:3px;
+        }
+        div.auto_complete ul li.selected {
+          background-color: #ffb;
+        }
+        div.auto_complete ul strong.highlight {
+          color: #800; 
+          margin:0;
+          padding:0;
+        }
+</style><textarea id="user_tag_list" name="user[tag_list]" rows="5" cols="80"><%= @user.tag_list %></textarea><div class="auto_complete" id="user_tag_list_auto_complete"></div><script type="text/javascript">
+//<![CDATA[
+var user_tag_list_auto_completer = new Ajax.Autocompleter('user_tag_list', 'user_tag_list_auto_complete', '/users/tag_suggestions.js', {method:'get', tokens:','})
+//]]>
+
+</script>
+</label></p>
+
+<p><label for="websites">Add your other websites, prefaced with "http://" (personal, portfolio, blog, Twitter, Facebook, LinkedIn, whatever!)</label><br/>
+<%= f.text_area :websites, :size => '80x5' %></p>
+
+
+<h4>I'd like to use stemming.org for:</h4>
+<p>
+<%= f.check_box :networking %>
+<label for="networking">Networking with other women in the STEM fields</label></p>
+<p>
+<%= f.check_box :mentoring %>
+<label for="mentoring">Mentoring women and girls interested in the STEM fields</label></p>
+<p>
+<%= f.check_box :menteeing %>
+<label for="menteeing">Getting mentorship from women experienced in my field</label></p>
+
+
+
+
+
+<p><%= submit_tag 'Update Profile' %></p>
+<% end -%>

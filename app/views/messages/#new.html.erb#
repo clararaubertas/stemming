@@ -1,0 +1,18 @@
+<% form_for @message, :url => user_messages_path(@user) do |f| %>
+
+<input type="hidden" name="message[to]" value="<%= @message.to %>" />
+<p>To: <% if @message.to.blank? %><%= collection_select(:message, :to, current_user.friends, :login, :login, {:prompt => 'Select Recipient' }) %><% else %><%= @message.to %><% end %></p>
+  <p>
+    Subject:<br />
+    <%= f.text_field :subject %>
+    <%= error_message_on @message, :subject %>
+    </p>
+    <p>
+      Message<br />
+      <%= f.text_area :body %>
+			<%= error_message_on @message, :body %>
+    </p>
+    <p>
+      <%= submit_tag "Send" %>
+    </p>
+<% end %>

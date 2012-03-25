@@ -1,0 +1,13 @@
+<% if @tag.object_type == 'Post' %>
+<h3>Posts tagged with <%= @tag.name %></h3>
+<% for p in @posts %>
+    <%= render :partial => "posts/post", :object => post %>
+<% end %>
+<% end %>
+
+<% if @tag.object_type == 'User' %>
+<h3>Users tagged with <%= @tag.name %></h3>
+<% users.each do |user| %>
+<%= render :partial => 'users/mini', :locals => { :u => user, :smaller => "no" } %>
+<% end %>
+<% end %>

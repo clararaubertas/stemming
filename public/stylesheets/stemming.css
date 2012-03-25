@@ -1,0 +1,132 @@
+/*
+
+#d1e751
+#4dbce9
+#26ade4
+
+*/
+
+/* 
+
+#00a8c6
+#40c0cb
+#f9f2e7
+#aee239
+#8fbe00
+
+*/
+
+/*
+
+#1b676b
+#519548
+#88c425
+#bef202
+#eafde6
+
+*/
+
+.clearing { clear: both; }
+
+h1, h2, h3, h4, h5, .nav { font-family: 'MisoRegular'; }
+h1 { font-family: 'MisoBold'; float: left; margin-left: 5px; margin-top: 2px; }
+h1 img { margin-bottom: 4px; }
+h1 a { text-decoration: none; color: #1b676b; }
+#head { background: url('/images/graph.png'); --webkit-border-radius: 0px 0px 10px 10px; --moz-border-radius: 0px 0px 10px 10px; border-radius: 0px 0px 10px 10px; padding: 5px; padding-bottom: 5px !important; margin-bottom: 5px; }
+
+h1 { color: #1b676b; margin-bottom: 0 !important; padding-bottom: 0 !important; }
+h1 span { font-size: 2.5em; }
+h2, h3, h4, h5 { background: #1b676b; padding-bottom: 0; border-bottom: #bef202 2px solid; color: #eafde6; padding: 5px; --webkit-border-radius: 10px 10px 0px 0px; --moz-border-radius: 10px 10px 0px 0px; border-radius: 10px 10px 0px 0px; margin-top: 15px !important; margin-bottom: 5px !important; }
+
+h3 a, h4 a, h2 a { text-decoration: none; color: #fff; }
+
+a { color: #519548; font-weight: bold; }
+
+body { background: #eafde6; }
+.container_12 { background: url('/images/stemming_logo_big.png') no-repeat 520px 0px; }
+
+.attribution { color: #1b676b; font-weight: bold; margin-bottom: 0; }
+
+.nav { margin-top: 0; padding-top: 0; margin-bottom: 0; float: right; }
+.nav li { display: inline; font-size: 1.5em; -moz-border-radius: 0px 0px 10px 10px; -webkit-border-radius: 0px 0px 10px 10px; border-radius: 0px 0px 10px 10px; border-top: 2px solid #1b676b; padding-top: 0px; }
+
+.nav li.current { background: #1b676b; }
+.nav li a { color: #eafde6; text-decoration: none; }
+.nav li { background: #88c425; padding: 10px; margin: 0; }
+
+.comment { border-bottom: #bef202 2px solid; color: #000 !important; }
+
+p, ul { margin-top: 0; margin-bottom: 1em; }
+
+.comment {  border-bottom: #aee239 2px solid; color: #f9f2e7; padding: 3px; }
+
+h3 { background: #519548; }
+
+.smalluser { width: 70px; float: left; text-align: center !important; margin-right: 10px; }
+.smalluser a, .smalluser img { text-align: center !important; margin: auto !important; }
+.smalluser p { margin: 0 !important; }
+.omega { margin-right: 0 !important; }
+
+pre, code, blockquote, .box, .smalluser, .box2, .flash, .alert { background: #fcffff; -moz-border-radius: 10px; -webkit-border-radius: 10px; border-radius: 10px; margin-bottom: 5px; padding: 10px; }
+
+pre, code, blockquote, .box2, .smalluser, .flash, .alert { background: url('/images/graph.png'); }
+.flash, .alert { font-size: 1.5em; font-weight: bold; padding: 20px; font-family: "MisoBold"; color: #1b676b; }
+.box2 input { max-width: 80%; }
+
+code { white-space: pre; display: block; width: auto; padding-top: 0px;  }
+
+.nextstep { font-weight: bold; text-align: center; margin-bottom: 15px; }
+
+
+th { font-weight: bold; padding-right: 5px; }
+td { padding-right: 10px; }
+
+.topbox { padding-top: 25px; }
+
+.commentbox { margin-bottom: 15px; }
+.commentp { margin-bottom: 0 !important; }
+
+.right { float: right; }
+
+input[type='submit'], .button { color: #bef202; background-color: #1b676b; border: 2px solid #ccc; border-radius: 10px; -moz-border-radius: 10px; -webkit-border-radius: 10px; padding: 10px 15px 5px 15px; font-family: "MisoBold"; font-size: 1.5em; 
+  -moz-box-shadow: 2px 2px 2px #aaa;
+  -webkit-box-shadow: 2px 2px 2px #aaa;
+  box-shadow: 2px 2px 2px #aaa;
+text-transform: lowercase; 
+font-weight: normal; text-decoration: none; 
+}
+input[type='submit']:hover, .button:hover { color: #fff; border-color: #fff; cursor: pointer; }
+.big { font-size: 2em; padding: 15px 20px 10px 20px; background: #88c425; color: #000; }
+.smaller { font-size: 1.3em; padding: 8px 10px 5px 10px; }
+
+#foot { margin-top: 20px; }
+
+.clearing { clear: both; }
+
+.form { margin-bottom: 0 !important; }
+
+.activeusers img { float: left; margin-right: 3px; }
+a.activeusers { font-size: 1.3em; text-decoration: none; font-family: 'MisoRegular'; }
+
+.box2 p { margin-bottom: 5px !important; }
+.side { float: left; width: 60px; }
+
+#fblike iframe { width: 200px !important; }
+
+.photo { margin-left: 10px; margin-top: 5px; }
+.city { margin: 0 !important; }
+
+.box2 .imagelink { float: left; margin-right: 10px; }
+.username a { text-decoration: none; font-size: 1.3em; }
+
+/* for the tag clouds */
+.css1 { font-size: .8em; }
+.css2 { font-size: 1em; }
+.css3 { font-size: 1.3em; }
+.css4 { font-size: 1.5em; }
+.css5 { font-size: 1.9em; }
+.css6 { font-size: 2em; }
+
+.highlight { padding: 10px; text-align: center; }
+
+textarea, input { max-width: 80% !important; }

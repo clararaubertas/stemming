@@ -1,0 +1,7 @@
+<% form_for @search, :html => {:method => 'get'} do |f| %>
+<p>Containing:  <%= f.text_field :content_like %></p>
+<p>Tagged with: <%= f.text_field :has_tags %></p>
+<p>By Username: <%= f.text_field :poster_login_like %></p>
+<%= submit_tag 'search' %>
+<% end %>
+

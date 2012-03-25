@@ -1,0 +1,68 @@
+<%= render :partial => 'next_step' %>
+<div class="container">
+<div class="grid_6 alpha">
+<div class="box2">
+<p class="highlight">
+<% if current_user.unread_messages? %>
+<%= link_to pluralize(current_user.unread_message_count, 'New Message'), {:controller => 'messages'}, :class => 'button' %>
+<% else %>
+<%= link_to 'Inbox (0)', {:controller => 'messages'}, :class => 'button' %>
+<% end %>
+
+<a class="button" href="/users/<%= current_user.login %>">your profile</a>
+<a class="button" href="/users/<%= current_user.id %>/edit">edit profile</a></p>
+</div>
+</div>
+<div class="grid_3 omega">
+<div class="box2">
+<p class="highlight"><a class="button big" href="/posts/new">write post</a></p>
+</div>
+</div>
+
+<p style="clear: both;"></p>
+<div class="container">
+<div class="grid_3 alpha">
+<h2>Your Friends' Posts</h2>
+
+<% for post in current_user.friends_posts %>
+<h3><%= link_to image_tag(post.poster.avatar.url(:small)), {:controller => 'users', :action => 'show', :id => post.poster}, :class => 'imagelink' %>      <%= link_to post.display_title, post_url(post) %></h3>
+<div class="box">
+
+<strong><%= post.created_at.strftime("%l:%M%p %m/%d/%Y") %></strong><br />
+<%= post.excerpt %><br />
+<%= link_to (pluralize post.comments.size, 'comment'), post_url(post) %>
+</div>
+<%   end %>
+
+</div>
+
+<div class="grid_3">
+<h2>Interesting Posts</h2>
+
+<% for post in current_user.interesting_posts %>
+<h3><%= link_to image_tag(post.poster.avatar.url(:small)), {:controller => 'users', :action => 'show', :id => post.poster}, :class => 'imagelink' %>      <%= link_to post.display_title, post_url(post) %></h3>
+<div class="box">
+
+<strong><%= post.created_at.strftime("%l:%M%p %m/%d/%Y") %></strong><br />
+<%= post.excerpt %><br />
+<%= link_to (pluralize post.comments.size, 'comment'), post_url(post) %>
+</div>
+<%   end %>
+</div>
+
+<div class="grid_3 omega">
+<h2>People You May Want To Meet</h2>
+<% for f in current_user.pending_friends_for_me %>
+<p><%= f.attribution_slug %> wants to be your friend! <%= link_to 'accept', :action => 'accept_friendship', :id => f.id, :controller => 'users' %>
+<%= link_to 'decline', :action => 'decline_friendship', :id => f.id, :controller => 'users' %></p>
+<% end %>
+<% for u in current_user.recommended_friends %>
+<div class="friend">
+<%= render :partial => 'users/mini', :locals => {:u => u, :smaller => "yes"} %>
+</div>
+<% end %>
+</div>
+<p style="clear: both;"></p>
+
+</div>
+</div>
