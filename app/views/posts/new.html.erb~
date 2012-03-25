@@ -1,0 +1,18 @@
+<% unless current_user.posts.size > 2 %>
+<div class="alert">
+<h3>What should I blog about?</h3>
+<p>You can blog about anything you find interesting! All your blog posts will show up on your profile and help other users get to know you; selected blog posts that the administrators think might appeal to the general community will get promoted to the front page.</p>
+<p>Some ideas: tell the story of how you got involved in your field; share links and resources of interest to the stemming community (like posts on other websites about women in STEM, or educational opportunities you've learned about); post something of technical interest; tell a story about an experience at work or school; ask a question you'd like other stemmers to weigh in on; link to cool things you've posted or read elsewhere; post something fun and silly!</p>
+</div>
+<% end %>
+
+
+<h2>New Blog Entry</h2>
+
+<%= error_messages_for :post %>
+
+<% form_for(:post, :html => {:multipart => true }, :url => posts_url) do |form| %>
+  <%= render :partial => 'form', :object => form, :locals => {:post => @post} %>
+  
+  <%= submit_tag "Create post"  %>
+<% end %>

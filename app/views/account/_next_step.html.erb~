@@ -1,0 +1,28 @@
+<% if current_user.next_step? %>
+<div class="alert">
+<h4>Next Step:</h4>
+<% if current_user.avatar_file_name.blank? %>
+<%= link_to "Edit your profile", :controller => 'users', :action => 'edit', :id => current_user.id %> and upload an avatar to represent you on the site!
+<% elsif current_user.city.blank? && current_user.zip.blank? %>
+<%= link_to "Edit your profile", :controller => 'users', :action => 'edit', :id => current_user.id %> and add your location, so other users in your area can find you.
+<% elsif (current_user.education.blank? || current_user.bio.blank? || current_user.career.blank?) %>
+<% @array = [] %>
+<% if current_user.bio.blank? %>
+<% @array << 'description' %>
+<% end %>
+<% if current_user.education.blank? %>
+<% @array << 'educational info' %>
+<% end %>
+<% if current_user.career.blank? %>
+<% @array << 'career info' %>
+<% end %>
+<%= link_to "Edit your profile", :controller => 'users', :action => 'edit', :id => current_user.id %> and fill out your <%= @array.to_sentence %> so other users can learn more about you.
+<% elsif current_user.tags.blank? %>
+<%= link_to "Edit your profile", :controller => 'users', :action => 'edit', :id => current_user.id %> and tag yourself with some of your interests, so other users interested in the same things can find you.
+<% elsif current_user.posts.blank? %>
+<%= link_to "Post a blog entry", :action => 'new', :controller => 'posts' %> to share links, advice, information, or anecdotes or start a discussion with the stemming community.
+<% elsif current_user.friends.size < 3 %>
+<%= link_to "Search for other users", :action => 'search', :controller => 'users' %> to make friends on the site and connect with other women and girls interested in the STEM fields.
+<% end %>
+</div>
+<% end %>

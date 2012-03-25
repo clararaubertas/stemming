@@ -1,0 +1,37 @@
+
+<div id="users">
+<h2><%= @pagetitle %></h2>
+<% if @nearbyusers && @nearbyusers.empty? %>
+<div class="alert">
+Sorry, no users found within 50 miles of your location.
+</div>
+<% elsif @users.empty? %>
+<div class="alert">
+Sorry, no users found.
+</div>
+<% end %>
+
+<p class="highlight"><a href="/users/browse" class="button">browse by tag</a></p>
+
+<% if controller.action_name == 'index' %>
+
+<% @users.each do |user| %>
+<div class="smalluser">
+<%= render :partial => 'users/supermini', :locals => { :u => user, :smaller => "yes" } %>
+</div>
+<% end %>
+<p class="clearing"></p>
+<% else %>
+<% @users.each do |user| %>
+<div class="box2">
+<%= render :partial => 'users/mini', :locals => {:u => user, :smaller => "no" } %>
+</div>
+<% end %>
+<% end %>
+
+<% if @users.size > 10 %>
+<div class="box2"><%= will_paginate @users %></div>
+<% end %>
+
+
+</div>

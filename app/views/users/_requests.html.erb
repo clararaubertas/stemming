@@ -1,0 +1,23 @@
+<% if @mentoring_request %>
+<p>You sent a request to mentor <%= @user.name %> on <%= @mentoring_request.created_at.strftime('%m/%d/%y') %>.</p>
+<% end %>
+<% if @menteeing_request %>
+<p>You sent a request to be mentored by <%= @user.name %> on <%= @menteeing_request.created_at.strftime('%m/%d/%y') %>.</p>
+<% end %>
+<% if @networking_request %>
+<p>You sent a networking request to <%= @user.name %> on <%= @networking_request.created_at.strftime('%m/%d/%y') %>.</p>
+<% end %>
+
+<% unless (@networking_request || !(@user.networking?)) && (@mentoring_request || !(@user.menteeing?)) && (@menteeing_request || !(@user.mentoring?)) %>
+<p>Send a request:
+<% unless @networking_request || (!(@user.networking?)) %>
+<%= link_to 'network', :action => 'new', :controller => 'requests', :user_id => @user.id, :request_type => 'networking' %>
+<% end %>
+<% unless @mentoring_request || (!(@user.menteeing?)) %>
+<%= link_to 'mentor', :action => 'new', :controller => 'requests', :user_id => @user.id, :request_type => 'mentoring' %>
+<% end %>
+<% unless @menteeing_request || (!(@user.mentoring?)) %>
+<%= link_to 'be mentored', :action => 'new', :controller => 'requests', :user_id => @user.id, :request_type => 'menteeing' %>
+<% end %>
+</p>
+<% end %>

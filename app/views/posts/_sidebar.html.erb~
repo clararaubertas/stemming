@@ -1,0 +1,42 @@
+<p><a class="rss" href="<%= @rss %>"><img src="/images/rss_32.png" />Subscribe to all posts</a></p>
+<p>You can also view <a href="/">featured posts chosen by the admins</a> or <a href="/posts/search">search</a> to find a particular post.</p>
+<h2>Browse posts</h2>
+<% tag_cloud @tags, %w(css1 css2 css3 css4 css5 css6) do |tag, css_class| %>
+  <%= link_to tag.name, "/#{tag.object_type.downcase}s/browse/#{tag}", :class => css_class %>
+<% end %>
+<p><%= link_to "(more tags...)", :action => 'browse', :controller => 'posts' %></p>
+
+<h2>We Also Like...</h2>
+<ul>
+<li><a href="http://anitaborg.org">Anita Borg Institute</a></li>
+<li><a href="http://devchix.com">DevChix</a></li>
+<li><a href="http://dotfiveone.com">dot five one</a></li>
+<li><a href="http://compscigail.blogspot.com/">The Female Perspective on Computer Science</a></li>
+<li><a href="http://geekfeminism.org">Geek Feminism blog</a></li>
+<li><a href="http://geekfeminism.wikia.com/wiki/Geek_Feminism_Wiki">Geek Feminism wiki</a></li>
+<li><a href="http://inklingmagazine.com">Inkling</a></li>
+<li><a href="http://linuxchix.org">LinuxChix</a></li>
+<li><a href="http://skepchick.org">Skepchick</a></li>
+<li><a href="http://shesgeeky.org">She's Geeky</a></li>
+<li><a href="http://whatanengineerlookslike.blogspot.com">This is what an Engineer Looks Like</a></li>
+<li><a href="http://womenwhotech.com">Women Who Tech</a></li>
+<li><a href="http://www.underthemicroscope.com/blog/">Under The Microscope</a></li>
+
+<li><a href="/contact">Suggest another...</a></li>
+</ul>
+
+
+<div id="postsads">
+<script type="text/javascript"><!--
+google_ad_client = "pub-2714553174508828";
+/* 120x240, created 12/15/09 */
+google_ad_slot = "5183308190";
+google_ad_width = 120;
+google_ad_height = 240;
+//-->
+</script>
+<script type="text/javascript"
+src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+<p>See an offensive or inappropriate ad? Email <a href="mailto:clara@stemming.org">clara@stemming.org</a> to get it removed.</p>
+</div>

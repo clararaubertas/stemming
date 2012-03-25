@@ -1,0 +1,18 @@
+<h2>Search Users</h2>
+<div class="box2">
+<% form_for @user_search, :html => {:method => 'get'} do |f| %>
+<input type="hidden" name="kind" value="user" />
+<p>Username:<br /><%= f.text_field :login_like %></p>
+<p>First Name:<br /><%= f.text_field :first_name_like %></p>
+<p>Last Name:<br /><%= f.text_field :last_name_like %></p>
+<p>Bio:<br /><%= f.text_field :bio_like %></p>
+<p>Career:<br /><%= f.text_field :career_like %></p>
+<p>Interests:<br /><%= f.text_field :has_tags %></p>
+<p>Education:<br /><%= f.text_field :education_like %></p>
+
+<p>Age between:<br /><%= f.select :age_gte, ['any'].concat((13..120).to_a) %> and <%= f.select :age_lte, ['any'].concat((13..120).to_a.reverse) %></p>
+<p><%= f.check_box :mentors %> Interested in mentoring</p>
+<p>Located Near <em>(country, state, city, address or zip)</em>:<br /> <input type="text" name="location" /></p>
+<%= submit_tag 'Search' %>
+<% end %>
+</div>

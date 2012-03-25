@@ -1,0 +1,6 @@
+<%= @tags.first.m %>
+<% tag_cloud @tags, %w(css1 css2 css3 css4 css5 css6) do |tag, css_class| %>
+  <%= link_to tag.name.gsub('&', '&amp;'), "/#{tag.object_type.downcase}s/browse/#{tag.to_s.gsub(' ', '%20')}", :class => css_class %>
+<% end %>
+
+

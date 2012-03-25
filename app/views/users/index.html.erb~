@@ -1,0 +1,20 @@
+<div id="users">
+<h2><%= @title %></h2>
+<% if @users.empty? %>
+<div class="alert">
+Sorry, no users found.
+</div>
+
+<% end %>
+
+<% @users.each do |user| %>
+<div class="friend">
+<%= render :partial => 'users/mini', :locals => { :u => user, :smaller => "no" } %>
+</div>
+<% end %>
+<%= will_paginate @users %>
+
+</div>
+<div id="usersidebar">
+<%= render :partial => 'users/sidebar' %>
+</div>

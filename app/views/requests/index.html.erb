@@ -1,0 +1,42 @@
+<% form_tag :action => 'hide_selected' do %>
+<h2>Requests</h2>
+<table>
+	<tr>
+		<th>Hide?</th>
+		<th>Type</th>
+		<th>Message</th>
+		<th>Sender</th>
+		<th>Sender Email</th>
+		<th>Sent</th>
+	</tr>
+	<% if @requests.size == 0 %>
+		<tr>
+			<td colspan="4">
+				No requests
+			</td>
+		</tr>
+	<% else %>
+		<% for request in @requests %>
+			<tr>
+				<td><%= check_box_tag "mark_as_read[]", request.id %></td>
+				<td>
+
+<%= request.request_type %>
+
+				</td>
+<td>
+<%= h request.message %>
+</td>
+				<td><%= link_to h(request.user.login), user_path(request.user) %></td>
+<td><a href="mailto:<%= request.user.email %>"><%= request.user.email %></a></td>
+		    <td><%=h request.created_at.to_s(:long) %></td>
+			</tr>
+		<% end %>
+		<tr>
+			<td colspan="4">
+				<%= submit_tag "Hide" %>
+			</td>
+		</tr>
+	<% end %>
+</table>
+<% end %>

@@ -1,0 +1,33 @@
+<div id="posts">
+
+<% if @tag && @tag.name == 'for teens' %>
+<h2>Posts for teens</h2>
+<p><strong>These posts feature content or links that may be of particular interest to our teen readers!</strong></p>
+<% else %>
+<h2><%= @pagetitle %></h2>
+<% end %>
+
+<% if @posts.empty? %>
+
+<div class="alert">
+Sorry, no posts found.
+</div>
+<% end %>
+<% @posts.each do |post| %>
+  <div class="post <%= post.state %>">
+    <a name="post_<%= post.id %>"></a>
+    
+    <%= render :partial => "posts/post", :object => post %>
+    
+  </div>
+<% end %>
+
+
+  <%= will_paginate @posts %>
+
+
+</div>
+<div id="sidebar">
+<%= render :partial => 'posts/sidebar' %>
+
+</div>

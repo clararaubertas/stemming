@@ -1,0 +1,21 @@
+
+<div class="grid_3 alpha">
+<h2><strong>From:</strong> <%= @message.sender == @user ? link_to("You", user_path(@user)) : link_to(h(@message.sender.login), user_path(@message.sender)) %></h2>
+</div>
+<div class="grid_3">
+<h2><strong>To:</strong> <%= @message.recipient == @user ? link_to("You", user_path(@user)) : link_to(h(@message.recipient.login), user_path(@user)) %></h2>
+</div>
+<div class="grid_3 omega">
+<h2><%= @message.created_at.strftime('%l:%M%p %b %e, %Y') %></h2>
+</div>
+<p style="clear: both;"></p>
+<div class="box">
+  <%=h @message.body %>
+</div>
+<p class="topbox">
+  <% if @message.recipient == @user %>
+	  <%= link_to "Reply", new_user_message_path(@user, :reply_to => @message), :class => 'button' %> 
+	  <%= link_to h(@message.sender.login) + "'s profile", user_path(@message.sender), :class => 'button' %>
+  <% end %>
+  <%= link_to "Inbox", user_messages_path(@user), :class => 'button' %>
+</p>

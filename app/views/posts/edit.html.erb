@@ -1,0 +1,8 @@
+<%= error_messages_for :post %>
+
+<% form_for(:post, :url => post_url(@post), :html => {:method => 'put', :multipart => true}) do |form| %>
+  <%= render :partial => 'form', :object => form, :locals => {:post => @post} %>
+    
+  <%= submit_tag "Update" %>
+<% end %>
+<p style="clear: both;"></p>

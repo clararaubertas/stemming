@@ -1,0 +1,7 @@
+<%= link_to image_tag(u.avatar.url(:thumb)), { :action => 'show', :id => u, :controller => 'users'}, :class => 'imagelink' %>
+<p class='username'><strong><%= link_to u.login, :action => 'show', :id => u, :controller => 'users' %></strong> <% if logged_in? %><% unless (current_user.pending_friends.include? u) || (current_user.friends.include? u) || (current_user == u) %><%= link_to 'add friend', {:action => 'request_friendship', :controller => 'users', :id => u}, :class => 'button right' %><% end %><% end %></p>
+<p><strong><%= u.first_name %> <%= u.last_name %></strong></p>
+<p><% unless u.city.blank? %><%= u.city %><% unless u.state.blank? && u.country.blank? %>, <% end %><% end %><%= u.state %> <%= u.country %> <% unless smaller == 'yes' %><%= u.zip %><% end %></p>
+<% unless u.tags.empty? || smaller == "yes" %><p><%= u.login.titleize %> likes <%= u.selected_tag_sentence %>.</p>
+<% end %>
+<p class="clearing"></p>

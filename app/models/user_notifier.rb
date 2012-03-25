@@ -1,0 +1,84 @@
+class UserNotifier < ActionMailer::Base
+
+  def comment(recipient, user)
+    @recipients = recipient.email
+    @from = "admin@stemming.org"
+    @sent_on = Time.now
+    @subject = "#{user.login} has commented on your profile at stemming.org"
+    @body[:username] = user.login
+    @body[:url] = "http://stemming.org/users/" + recipient.login
+  end
+
+  def invitation(message, recipients)
+    @recipients  = recipients
+    @from        = "admin@stemming.org"
+    @sent_on     = Time.now
+    @subject = "invitation to join stemming.org - women & girls in science/tech/engineering/math"
+    @body[:message] = message
+  end
+
+  def deletion_message(user)
+    setup_email(user)
+    @subject += "Your account at stemming.org was removed"
+  end
+
+  def forgot_password(user)
+    setup_email(user)
+    @subject    += 'Request to change your password'
+    @body[:url]  = "http://stemming.org/users/reset_password/#{ user.password_reset_code}"
+    @body[:user] = user
+  end
+
+  def reset_password(user)
+    setup_email(user)
+    @subject    += 'Your password has been reset'
+  end
+
+
+  def request(user, sender, request)
+    setup_email(user)
+    @subject += sender.login
+    @subject += " has sent you a "
+    @subject += request.request_type
+    @subject += " request!"
+    @body[:message] = request.message
+  end
+
+  def friend_request(user, friend)
+    setup_email(friend)
+    @subject += user.login
+    @subject += ' has requested to add you as a friend!'
+    @body[:url] = "http://stemming.org/account"
+    @body[:friend] = user
+  end
+
+  def message(user, sender, message_subject)
+    setup_email(user)
+    @subject += sender.login
+    @subject += ' has sent you a message!'
+    @body[:url] = "http://stemming.org/account"
+    @body[:sender] = sender
+    @body[:message_subject] = message_subject
+  end
+
+  def signup_notification(user)
+    setup_email(user)
+    @subject    += 'Please activate your new account'
+    @body[:url]  = "http://stemming.org/account/activate/#{user.activation_code}"
+  end
+  
+  def activation(user)
+    setup_email(user)
+    @subject    += 'Your account has been activated!'
+    @body[:url]  = "http://YOURSITE/"
+  end
+  
+  protected
+  def setup_email(user)
+    @recipients  = "#{user.email}"
+    @from        = "admin@stemming.org"
+    @subject     = "stemming.org: "
+    @sent_on     = Time.now
+    @body[:user] = user
+  end
+end

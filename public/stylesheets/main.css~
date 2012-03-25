@@ -1,0 +1,393 @@
+pre {
+background-color: #eee;
+  padding: 10px;
+  font-size: 11px;
+}
+
+
+.fieldWithErrors {
+  padding: 2px;
+  background-color: #fa2099;
+  display: table;
+}
+
+#errorExplanation {
+  width: 400px;
+  border: 2px solid #fa2099;
+  padding: 7px;
+  padding-bottom: 12px;
+  margin-bottom: 20px;
+  background-color: #f0f0f0;
+  margin-top: 15px; 
+-moz-border-radius: 10px;
+-webkit-border-radius: 10px;
+border-radius: 10px;
+
+}
+
+#errorExplanation h2 {
+  text-align: left;
+  font-weight: bold;
+  padding: 5px 5px 5px 15px;
+  background-color: #fa2099;
+  color: #000;
+}
+
+#errorExplanation p {
+  color: #333;
+  margin-bottom: 0;
+  padding: 5px;
+}
+
+#errorExplanation ul li {
+  font-size: 12px;
+  list-style-type: inside; 
+}
+
+
+* { margin: 0; padding: 0; }
+
+body { font-family: Helvetica, Arial, sans-serif; font-size: 13px; }
+
+#head img, #head h1, #head h2, #head p { float: left; clear: none; }
+
+#head img { margin-left: -83px; margin-top: -115px; margin-bottom: 5px; float: left; }
+h1 { width: 799px; height: 78px; background: url('/images/stemmingdotorg.png'); float: left; margin-top: -20px; margin-left: -15px; }
+h1 a { display: block; width: 799px; height: 78px; }
+h1 span { margin-left: -9999px; }
+h2.title span { margin-left: -9999px; }
+h2.title { width: 0px; height: 0px; }
+
+#nav { list-style-type: none; float: left; background: #33aa00; width: 850px; margin-left: -15px; 
+margin-top: 10px; 
+-moz-border-radius: 10px;
+-webkit-border-radius: 10px;
+border-radius: 10px;
+font-family: "Trebuchet MS", sans-serif;
+padding-left: 8px;
+padding-right: 8px;
+padding-top: 3px;
+padding-bottom: 3px;
+font-size: 1.2em; 
+
+}
+
+#nav li { float: left; 
+position: relative;
+padding: 5px !important;
+margin-right: 2em; cursor: pointer; 
+-moz-border-radius: 10px;
+-webkit-border-radius: 10px;
+border-radius: 10px;
+display: block; 
+}
+
+#nav li, #nav li a { font-weight: bold; text-transform: lowercase; text-decoration: none; color: #fff; }
+#nav li a:hover { background: transparent !important; color: #000 !important; }
+
+#nav li ul a { color: #000; margin: 0; padding: 0; }
+
+#nav li ul { 
+left: -999em;
+float: none; 
+list-style-type: none;
+margin-left: -10px;
+margin-top: 3px; 
+width: 12em;
+-moz-border-radius: 10px;
+-webkit-border-radius: 10px;
+border-radius: 10px;
+padding-left: 10px;
+padding-right: 10px;
+padding-top: 5px;
+padding-bottom: 5px;
+background: #55aaff; 
+position: absolute;
+}
+
+#nav li:hover ul, #nav li.over ul { left: auto; }
+#nav li ul li { display: block; }
+#nav li ul a { color: #fff; }
+
+p { margin-top: 0; margin-bottom: 1em; }
+h1 { color: #387a00; }
+h2 { margin-bottom: 5px; }
+h3, h4, h5 { margin-top: 1em; margin-bottom: 0; }
+h3.top, h4.top, h5.top { margin-top: 0; }
+h2, h3 { color: #0066bb; }
+h1, h2, h3 { font-family: SteinemRoman, "Trebuchet MS", sans-serif; font-weight: normal; text-transform: lowercase; }
+h1 { font-size: 2.4em; }
+h2 { font-size: 2em; margin-top: .4em; }
+h3 { font-size: 1.6em; }
+h4 { font-size: 1.2em; }
+
+#container { width: 950px; margin: auto; 
+margin-top: 0px; margin-bottom: 10px; 
+-moz-border-radius: 10px;
+-webkit-border-radius: 10px;
+border-radius: 10px;
+padding: 15px; background: #fff; 
+}
+
+.flash { width: 950px; margin: auto; }
+.toplogin { text-align: right; display: block; margin-bottom: 0; width: 950px; margin: auto; }
+.topshare { float: right; padding-right: 20px; padding-top: 5px; }
+.loginarea { float: right; }
+.loginarea form { float: right; clear: right; }
+.loginarea p { margin-bottom: 0; margin-top: 10px; }
+.topshare span { font-weight: bold; }
+
+.topshare a img { margin-bottom: -18px; padding-top: 3px; }
+a.rss img { margin-bottom: -7px; }
+a.rss { text-decoration: none; }
+
+#left_side { width: 400px; float: left; }
+#right_side { width: 540px; float: right; }
+
+.bio { margin-top: 11px; }
+.bio h3 { margin-top: 0; }
+.bio p { margin-bottom: 1em; }
+.user_comments { margin-top: 15px; }
+.user_comments h2 { margin-bottom: 0; }
+.user_comments p { margin-top: 0; }
+.comments h2 { margin-bottom: 0; font-size: 1.8em; margin-top: 1em; }
+.comments p { margin-top: 0; }
+.photo img { float: left; margin-right: 15px; }
+.photo h2, .photo h3, .photo .city, .photo .age { float: left; width: 100px; }
+.photo h2 { font-size: 1.8em; }
+
+.clearing { clear: both; height: 0px !important; }
+
+/* da0079 */
+a { color:  #da0079; font-weight: bold; padding: 1px; }
+/* .alert a, .alert h4 { color: #fff; }  */
+.friend a, .content a, .frontpagefriend a, .frontpagecomment a { color: #000; }
+.content a { text-decoration: underline; cursor: pointer; }
+
+.friend p { margin-bottom: 0; }
+a:hover { color: #fff !important; background-color: #da0079; }
+#nav li:hover, #nav li.current { background: #55aaff; color: #000 !important; }
+
+a.posttag { font-weight: bold; }
+h2.posttitle a { text-decoration: none; font-weight: normal; color: #0066bb; }
+h2 a { padding-top: 5px; }
+h2.posttitle { font-size: 2em; }
+.post h3, #frontpageusers h3 { margin-top: 0; }
+.post { margin-bottom: 2em; }
+.postimg { float: left; margin-right: 5px; margin-bottom: 5px; }
+
+img { border: 0; }
+
+/* .flash, .alert { font-weight: bold; background: #1166bb; font-size: 1.25em; margin-top: 10px; margin-bottom: 10px; padding: 15px; 
+color: #fff; 
+-moz-border-radius: 10px;
+-webkit-border-radius: 10px;
+border-radius: 10px;
+font-family: "Trebuchet MS", sans-serif; } */
+.flash, .alert { font-weight: bold; text-align: center; font-size: 1.2em; }
+
+.actions { font-weight: bold; font-size: 1.1em; font-family: "Trebuchet MS", sans-serif; }
+.actions * { margin: 0 !important; padding: 0 !important; }
+
+.toplogin { color: #333; background: transparent; padding: 0px; margin-bottom: 0px; }
+/* .toplogin a { color: #; } */
+
+#footer { color: #333; background: transparent; text-align: center; width: 950px; margin: auto; padding-bottom: 25px; }
+/* #footer a { color: #fff; } */
+
+/ * .alert h2, .alert h3, .alert h4 { color: #000; } */
+.alert * { margin: 0; padding: 0; }
+.alert p { display: block; }
+.alert p.alert2 { margin-top: 1em; }
+
+.friends { float: left; padding-right: 1em; margin-top: 1em; }
+.leftfriends { float: left; width: 170px; }
+.rightfriends { float: left; width: 170px; }
+
+.frontpagecomment, .frontpagefriend, .content, .friend { clear: left; margin-bottom: 10px; padding: 10px; background: #d1e1ff; 
+color: #000;
+
+-moz-border-radius: 10px;
+-webkit-border-radius: 10px;
+border-radius: 10px;
+
+}
+
+#post_content { width: 100% !important; }
+
+.imagelink { float: left; margin-right: 10px; }
+.postside .imagelink { float: right; margin-right: 0px;  }
+a.imagelink:hover, td a:hover, a.nobg:hover { background: transparent; }
+.frontpagecomment img { margin-left: 10px; margin-right: 20px; }
+.frontpagefriend img { margin-left: 15px; margin-right: 15px; }
+
+
+.networkingrequest { margin-top: 1em; font-size: 1.2em; }
+
+
+
+.content { margin-top: 10px; }
+.comments .content, .user_comments .content, p.content  { margin-top: 0; margin-bottom: 10px; }
+
+.content p { margin-bottom: 1em; }
+
+.content ol, .content ul { margin-left: 2em; }
+
+.content ul { margin-right: 2em; margin-bottom: 1em; }
+.content ul li { margin-bottom: .25em; }
+.content blockquote, .content code, .content pre { background: #fff; margin-right: 3em; margin-left: 2em; -moz-border-radius: 10px;
+-webkit-border-radius: 10px;
+border-radius: 10px;
+padding: 5px; 
+margin-top: 5px !important;
+margin-bottom: 5px !important; 
+overflow: auto;
+}
+
+.blog_entries, .blog_comments { float: left; margin-top: 1em; clear: left; }
+.blog_entries h3 a { text-decoration: none; }
+
+
+
+ul { list-style: inside; }
+ul.horizontal-menu { list-style-type: none; }
+ul.horizontal-menu li { display: inline; }
+.content ul.horizontal-menu { margin-left: 0;  }
+
+a.slug  { font-weight: bold; text-decoration: none; }
+.slug img { margin-bottom: -5px; }
+.attribution { margin-top: 5px; }
+
+img.activeuserimg { float: left; margin-right: 5px; clear: left; margin-bottom: 5px; }
+a.activeusers { font-size: 1.2em; text-decoration: none; }
+span.activeusers { float: left; margin-bottom: 5px; }
+
+.side { float: left; width: 60px; }
+
+
+th, td { padding-bottom: 5px; padding-right: 10px; text-align: left; }
+
+#frontpageposts { width: 570px; float: left; }
+#frontpageusers { width: 340px; float: right; }
+#frontpageusers h3 { margin-top: 10px; }
+.frontpagefriend, .frontpagecomment { width: 80px; float: left; clear: none; font-size: .8em; text-align: center; margin-right: 5px; height: 95px; padding-left: 0; padding-right: 0; }
+.frontpagefriend *, .frontpagecomment * { margin: 0; padding: 0; }
+.frontpagecomment { width: 340px; height: auto; }
+.frontpagecomment .rightdiv p { text-align: left; font-size: 1.25em; }
+.frontpagecomment .leftdiv { float: left; width: 80px; margin-right: 5px; margin-left: 5px; }
+.frontpagecomment .leftdiv p { display: block; text-align: center; }
+.frontpagecomment .rightdiv { float: left; width: 220px; }
+
+#frontpageusers h3 { font-size: 2em; text-transform: lowercase; }
+
+.frontstrong, .label { color: #33aa00; font-weight: bold; }
+.label { text-align: right; }
+
+
+a.calltoaction { font-size: 1.3em; }
+
+
+#wanttomeet { margin-top: 1em; }
+#messagesandfriends { width: 470px; float: left; }
+#friendsposts { width: 470px; float: right; }
+
+.frontpage img { max-height: 150px; max-width: 150px; }
+
+/* for the tag clouds */
+.css1 { font-size: .8em; }
+.css2 { font-size: .9em; }
+.css3 { font-size: 1.2em; }
+.css4 { font-size: 1.3em; }
+.css5 { font-size: 1.5em; }
+.css6 { font-size: 1.6em; }
+.css1, .css2 { font-weight: normal; }
+
+
+.comments .content { margin-top: 0 !important; }
+.comments .content h4 { margin-top: 0; }
+
+p.update { padding-bottom: 5px; margin: 0; }
+
+#posts { width: 730px; float: left; }
+#users { width: 580px; float: left; }
+#usersidebar { width: 342px; float: right; }
+
+
+#posts .alert { margin-bottom: 1em !important; }
+
+#sidebar { width: 212px; float: right; }
+
+
+.postcontainer { clear: both; }
+.postside { width: 110px; float: left; text-align: right; margin-right: 10px; }
+.postcontainer .postotherside  { float: left; width: 590px; clear: none; }
+.frontcontainer .postotherside { width: 430px !important; }
+
+
+p.attribution { clear: left; }
+.postcontainer h2.posttitle { float: left; width: 430px; }
+.postside p { margin: 0; float: right; clear: right; }
+.postside .frontdate { font-size: 1.3em; padding-top: 1em !important; }
+.frontdate, .fronttime { font-weight: bold; }
+.postside .commentno { font-size: 1.3em; }
+.postside a { text-decoration: none; }
+.postside .showuser { font-size: 1.1em; }
+
+.pagination { margin-top: 1.5em; }
+
+.section { margin-bottom: 2em; }
+
+#frontpageads { width: 308px; margin: auto; clear: both; }
+#facebook { width: 305px; margin: auto; clear: both; margin-bottom: 20px; margin-top: 20px; }
+
+
+#postsads { width: 160px; margin: auto; font-size: 1em; margin-top: 10px; }
+#postsads p { clear: both; }
+
+#postsads, #frontpageads { border: 1px solid #aaa; padding: 5px; }
+
+#usersearch { float: left; width: 450px; }
+#postsearch { float: right; width: 450px; }
+#postsearch .content, #postsearch h2.posttitle, #postsearch .postotherside { width: 300px; float: left;  }
+
+/*
+ * This CSS file has been generated by fontsquirrel.com and is based on the work of Paul Irish. 
+* 
+*/
+
+
+/*
+ *
+ * The fonts included are copyrighted by the vendor listed below.
+ *
+ * @vendor:     Apostrophic Labs
+ * @vendorurl:  http://moorstation.org/typoasis/designers/lab/index.htm
+ * @licenseurl: http://www.fontsquirrel.com/license/Steinem
+ *
+ *
+ */
+
+@font-face {
+	font-family: 'SteinemRoman';
+	src: url('STEINEM_.eot');
+	src: local('Steinem Roman'), local('Steinem'), url('STEINEM_.woff') format('woff'), url('STEINEM_.ttf') format('truetype'), url('STEINEM_.svg#Steinem') format('svg');
+}
+
+@font-face {
+	font-family: 'SteinemRomanItalic';
+	src: url('STEINEMI.eot');
+	src: local('Steinem RomanItalic'), local('Steinem-Italic'), url('STEINEMI.woff') format('woff'), url('STEINEMI.ttf') format('truetype'), url('STEINEMI.svg#Steinem-Italic') format('svg');
+}
+
+@font-face {
+	font-family: 'SteinemBold';
+	src: url('STEINEMB.eot');
+	src: local('Steinem Bold'), local('Steinem-Bold'), url('STEINEMB.woff') format('woff'), url('STEINEMB.ttf') format('truetype'), url('STEINEMB.svg#Steinem-Bold') format('svg');
+}
+
+@font-face {
+	font-family: 'SteinemBoldItalic';
+	src: url('STEINBI_.eot');
+	src: local('Steinem BoldItalic'), local('Steinem-BoldItalic'), url('STEINBI_.woff') format('woff'), url('STEINBI_.ttf') format('truetype'), url('STEINBI_.svg#Steinem-BoldItalic') format('svg');
+}
+

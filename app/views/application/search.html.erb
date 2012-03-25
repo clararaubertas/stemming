@@ -1,0 +1,48 @@
+<% if params[:search] %>
+<div class="grid_4 alpha">
+<h2>Users matching <%= params[:search] %></h2>
+<% if @users.empty? %>
+<div class="alert">
+Sorry, no users found.
+</div>
+<%= @prms %>
+<% end %>
+
+<% @users.each do |user| %>
+<div class="box2">
+<%= render :partial => 'users/mini', :locals => { :u => user, :smaller => "no" } %>
+</div>
+<% end %>
+<div class="box2">
+<%= will_paginate @users, :param_name => 'user_page' %>
+</div>
+</div>
+<div class="grid_5 omega">
+<h2>Posts matching <%= params[:search] %></h2>
+<% if @posts.empty? %>
+<div class="alert">
+Sorry, no posts found.
+</div>
+<% end %>
+<% @posts.each do |post| %>
+  <div class="post <%= post.state %>">
+    <a name="post_<%= post.id %>"></a>
+    
+    <%= render :partial => "posts/post", :object => post %>
+    
+  </div>
+<% end %>
+
+<div class="box2">
+  <%= will_paginate @posts, :param_name => 'post_page' %>
+</div>
+
+</div>
+<% else %>
+<div class="grid_5 alpha">
+<%= render :partial => 'users/search' %>
+</div>
+<div class="grid_4 omega">
+<%= render :partial => 'posts/search' %>
+</div>
+<% end %>

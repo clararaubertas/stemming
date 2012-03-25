@@ -1,0 +1,20 @@
+class Activity < ActiveRecord::Base
+  belongs_to :user
+
+  def item
+    begin
+      case self.activity_type
+      when 'friendship'
+        return Friendship.find(self.activity_id)
+      when 'post'
+        return Post.find(self.activity_id)
+      when 'comment'
+        return Comment.find(self.activity_id)
+      when 'user_comment'
+        return UserComment.find(self.activity_id)
+      end
+    rescue
+      return nil
+    end
+
+end

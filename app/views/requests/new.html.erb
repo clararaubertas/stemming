@@ -1,0 +1,22 @@
+<h2>Send A <%= params[:request_type].titleize %> Request</h2>
+<p>Below is the text that will be emailed to <%= @user.attribution_slug %>. You can add a personalized message in the text box.</p>
+
+<p class="networkingrequest">
+<% unless params[:request_type] == 'menteeing' %>
+<%= current_user.name.titleize %> wants to <%= @kind %> you! 
+<% else %>
+<%= current_user.name.titleize %> wants you to mentor <%= current_user.pronoun('obj') %>!
+<% end %>
+
+Email <%= current_user.pronoun('obj') %> at <%= current_user.email %> so you can get together.
+</p>
+<% form_for(@request) do |f| %>
+<input type="hidden" name="request[recipient_id]" value="<%= params[:user_id] %>" />
+<input type="hidden" name="request[request_type]" value="<%= params[:request_type] %>" />
+<input type="hidden" name="request[user_id]" value="<%= current_user.id %>" />
+  <%= f.error_messages %><%= f.text_area 'message', :size => "80x10" %>
+  <p>
+    <%= f.submit 'Send' %>
+  </p>
+<% end %>
+
