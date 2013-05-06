@@ -1,1 +1,2 @@
-config/initializers/heroku_env.rb
+config/heroku_env.rb
+config/environment.rb
